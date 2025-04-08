@@ -1,103 +1,203 @@
-import Image from "next/image";
+import Image from 'next/image';
+import poppins from '../../public/fonts/font';
+import { ReactNode } from 'react';
+import SecondHeader from '@/components/UI/SecondHeader';
+import companyImages from '@/data/comp-part';
+import Card from '@/components/UI/Card';
+
+export const Container = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className={`max-w-[1440px] ${poppins.className}  mx-auto bg-gradient`}>
+      {children}
+    </div>
+  );
+};
+
+//
+export const Header = () => {
+  return (
+    <header className="flex pop px-[50px]  py-[35px] text-white  justify-between font-medium leading-[100%]">
+      <Image
+        priority
+        src={'/images/logo.svg'}
+        alt="logo"
+        width={146}
+        height={17}
+      />
+      <nav>
+        <ul className="flex gap-[30px] ">
+          <li>
+            <a href="">Courses</a>
+          </li>
+          <li>
+            <a href="">Pricing</a>
+          </li>
+          <li>
+            <a href="">About Us</a>
+          </li>
+          <li>
+            <a href="">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+      <div className="flex gap-[30px]">
+        <div className="flex gap-[7px]">
+          <img src="/images/user.svg" alt="account" />
+          <span>Account</span>
+        </div>
+        <div className="flex gap-[7px]">
+          <img src="/images/cart.svg" alt="cart" />
+          <span>Cart</span>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+// MAIN
+
+export const HeroSection = () => {
+  return (
+    <section className=" max-w-[1305px] mx-auto  grid grid-cols-2 place-items-center rounded-br-[200px]  text-white ">
+      <div>
+        <h1 className="text-[60px] leading-[80px]  font-bold  ">
+          Upgrade{' '}
+          <span className="font-bold text-[70px]  leading-[80px]">YOUR</span>{' '}
+          skills for better future
+        </h1>
+        <p className="text-[22px] mt-[10px] mb-[31px] max-w-[527px]">
+          Lorem ipsum dolor sit amet consectetur. Erat in commodo in a. Sit
+          interdum mi felis laoreet sagittis.
+          {/* Find time for better yourself! And hone your skills! */}
+        </p>
+        <div className="mt-8 flex gap-4">
+          <a
+            className="rounded-[6px] py-[10px] px-[25px] bg-[#FF00C7]"
+            href="/"
+          >
+            Check Courses
+          </a>
+          <a
+            className="rounded-[6px] py-[10px] px-[25px] bg-transparent border-1 border-[#FFFFFF]"
+            href="/"
+          >
+            Learn more
+          </a>
+        </div>
+      </div>
+
+      {/* Правая часть */}
+      <div className="mb-[180px]">
+        <img
+          src="/images/hero-character.png"
+          alt="Person working on a computer"
+        />
+      </div>
+    </section>
+  );
+};
+//  candp
+export const CompanyAndPartnersIcons = () => {
+  return (
+    <div className="flex justify-center gap-[100px]">
+      {companyImages.map((item) => (
+        <img key={item.id} src={item.src} alt={item.alt} />
+      ))}
+    </div>
+  );
+};
+
+export const CompanyAndPartners = () => {
+  return (
+    <section>
+      <SecondHeader position="center" text={'Our Company and Partners'} />
+      <CompanyAndPartnersIcons />
+    </section>
+  );
+};
+
+//
+
+export const OurCourse = () => {
+  return (
+    <section>
+      <SecondHeader position="left" text={'Our Courses'} />
+      <nav aria-label="Course Categories">
+        <ul>
+          <li>
+            <a href="#top-rated">Top Rated</a>
+          </li>
+          <li>
+            <a href="#development">Development</a>
+          </li>
+          <li>
+            <a href="#design">Design</a>
+          </li>
+          <li>
+            <a href="#music">Music</a>
+          </li>
+          <li>
+            <a href="#marketing">Marketing</a>
+          </li>
+          <li>
+            <a href="#business">Business</a>
+          </li>
+          <li>
+            <a href="#photography">Photography</a>
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <Card />
+        {/* <article>
+          <div>
+            <img
+              src="/images/cards/Rectangle 1085.png"
+              alt="Artificial Intelligence course"
+            />
+          </div>
+          <div>
+            <h3>Artificial Intelligence</h3>
+            <p>Modern Artificial Intelligence with zero coding</p>
+            <small>Jhon David</small>
+            <div aria-live="polite">
+              <ul>
+                {Array.from({ length: 5 }, (_, index) => (
+                  <li key={index} aria-label={`Rating ${index + 1} star`}>
+                    <span role="img" aria-label="star">
+                      &#9733;
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <span>4.9</span>
+            </div>
+            <div>
+              <p>$ 49.99</p>
+              <button>Buy now</button>
+            </div>
+          </div>
+        </article> */}
+      </div>
+    </section>
+  );
+};
+
+export const Main = ({ children }: { children: ReactNode }) => {
+  return <main>{children}</main>;
+};
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <Container>
+      <Header />
+      <Main>
+        <HeroSection />
+        <div className="bg-white">
+          <CompanyAndPartners />
+          <OurCourse />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </Main>
+    </Container>
   );
 }
