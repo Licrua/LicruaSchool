@@ -8,7 +8,7 @@
 
 @layer base {
   p {
-    @apply font-medium leading-[100%];
+    @apply font-medium;
   }
 }
 

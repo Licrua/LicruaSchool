@@ -4,6 +4,9 @@ import { ReactNode } from 'react';
 import SecondHeader from '@/components/UI/SecondHeader';
 import companyImages from '@/data/comp-part';
 import Card from '@/components/UI/Card';
+import { courses } from '@/data/courses';
+import { features } from 'process';
+import featuresData from '@/data/features';
 
 export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -109,7 +112,7 @@ export const CompanyAndPartnersIcons = () => {
 
 export const CompanyAndPartners = () => {
   return (
-    <section>
+    <section className="pt-10 flex flex-col gap-[53px]">
       <SecondHeader position="center" text={'Our Company and Partners'} />
       <CompanyAndPartnersIcons />
     </section>
@@ -120,64 +123,80 @@ export const CompanyAndPartners = () => {
 
 export const OurCourse = () => {
   return (
-    <section>
+    <section className="px-[136px] mt-[90px]">
       <SecondHeader position="left" text={'Our Courses'} />
-      <nav aria-label="Course Categories">
-        <ul>
+      <nav aria-label="Course categories">
+        <ul className="flex items-center mt-5 mb-[59px] gap-6">
           <li>
-            <a href="#top-rated">Top Rated</a>
+            <button className="text-purple-700 font-bold underline underline-offset-[6px]">
+              Top Rated
+            </button>
           </li>
           <li>
-            <a href="#development">Development</a>
+            <button className="text-gray-600">Development</button>
           </li>
           <li>
-            <a href="#design">Design</a>
+            <button className="text-gray-600">Design</button>
           </li>
           <li>
-            <a href="#music">Music</a>
+            <button className="text-gray-600">Music</button>
+          </li>
+
+          <li>
+            <button className="text-gray-600">Marketing</button>
           </li>
           <li>
-            <a href="#marketing">Marketing</a>
+            <button className="text-gray-600">Business</button>
           </li>
           <li>
-            <a href="#business">Business</a>
-          </li>
-          <li>
-            <a href="#photography">Photography</a>
+            <button className="text-gray-600">Photography</button>
           </li>
         </ul>
       </nav>
-      <div>
-        <Card />
-        {/* <article>
-          <div>
-            <img
-              src="/images/cards/Rectangle 1085.png"
-              alt="Artificial Intelligence course"
-            />
-          </div>
-          <div>
-            <h3>Artificial Intelligence</h3>
-            <p>Modern Artificial Intelligence with zero coding</p>
-            <small>Jhon David</small>
-            <div aria-live="polite">
-              <ul>
-                {Array.from({ length: 5 }, (_, index) => (
-                  <li key={index} aria-label={`Rating ${index + 1} star`}>
-                    <span role="img" aria-label="star">
-                      &#9733;
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <span>4.9</span>
-            </div>
-            <div>
-              <p>$ 49.99</p>
-              <button>Buy now</button>
-            </div>
-          </div>
-        </article> */}
+      <div className="grid grid-cols-[repeat(auto-fit,_minmax(0,_277px))] w-full  justify-center content- gap-y-[50px] gap-x-5">
+        {courses.map((course) => (
+          <Card key={course.id} {...course} />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+type Feature = {
+  id?: number;
+  title: string;
+  description: string;
+  src: string;
+};
+
+export const FeatureAndServicesCard = ({
+  title,
+  description,
+  src,
+}: Feature) => {
+  return (
+    <article className="flex flex-col items-start gap-3 max-w-[270px]">
+      <Image src={src} alt={title} width={33} height={33} />
+      <h3 className="font-medium text-xl">{title}</h3>
+      <p className=" text-gray-600">{description}</p>
+    </article>
+  );
+};
+export const FeaturesAndServices = () => {
+  return (
+    <section className='flex flex-col mt-10 items-center gap-14'>
+      <div className="flex flex-col items-center justify-center max-w-[673px] gap-2.5">
+        <SecondHeader text="Our Features and Services" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur. Euismod diam phasellus quis
+          aliquet purus sem ornare mollis vulputate. Sapien purus faucibus massa
+          pharetra.{' '}
+        </p>
+      </div>
+      <div className="grid grid-cols-3 gap-[50px]">
+        {featuresData.map((feature) => (
+          <FeatureAndServicesCard key={feature.id} {...feature} />
+        ))}
       </div>
     </section>
   );
@@ -196,6 +215,7 @@ export default function Home() {
         <div className="bg-white">
           <CompanyAndPartners />
           <OurCourse />
+          <FeaturesAndServices />
         </div>
       </Main>
     </Container>

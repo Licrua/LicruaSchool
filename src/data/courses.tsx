@@ -8,7 +8,7 @@ type Course = {
   image: string;
 };
 
-const courses: Course[] = [
+export const courses: Course[] = [
   {
     id: 1,
     category: 'Artificial Intelligence',
