@@ -7,6 +7,9 @@ import Card from '@/components/UI/Card';
 import { courses } from '@/data/courses';
 import { features } from 'process';
 import featuresData from '@/data/features';
+import Arrow from '@/components/Arrow';
+import BenefitsSection from '@/components/HeroSection';
+import heroSections from '@/data/benefits';
 
 export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -119,11 +122,9 @@ export const CompanyAndPartners = () => {
   );
 };
 
-//
-
 export const OurCourse = () => {
   return (
-    <section className="px-[136px] mt-[90px]">
+    <section className="px-[136px] flex flex-col justify-center mt-[90px]">
       <SecondHeader position="left" text={'Our Courses'} />
       <nav aria-label="Course categories">
         <ul className="flex items-center mt-5 mb-[59px] gap-6">
@@ -158,6 +159,12 @@ export const OurCourse = () => {
           <Card key={course.id} {...course} />
         ))}
       </div>
+      <button className="flex group mt-[40px] bg-transparent btnAnimation  justify-center items-center gap-2">
+        <p className="text-secondary font-normal group-hover:text-pink-500">
+          Show more
+        </p>
+        <Arrow />
+      </button>
     </section>
   );
 };
@@ -184,7 +191,7 @@ export const FeatureAndServicesCard = ({
 };
 export const FeaturesAndServices = () => {
   return (
-    <section className='flex flex-col mt-10 items-center gap-14'>
+    <section className="flex flex-col mt-10 items-center gap-14">
       <div className="flex flex-col items-center justify-center max-w-[673px] gap-2.5">
         <SecondHeader text="Our Features and Services" />
         <p>
@@ -216,6 +223,17 @@ export default function Home() {
           <CompanyAndPartners />
           <OurCourse />
           <FeaturesAndServices />
+          {heroSections.map((section) => (
+            <BenefitsSection
+              key={section.id}
+              headerText={section.title}
+              paragraphText={section.description}
+              buttonText={section.buttonText}
+              imageSrc={section.imageSrc}
+              buttonColor={section.buttonColor}
+              imageOrder={section.imageOrder}
+            />
+          ))}
         </div>
       </Main>
     </Container>
