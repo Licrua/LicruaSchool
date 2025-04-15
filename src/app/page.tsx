@@ -10,6 +10,7 @@ import featuresData from '@/data/features';
 import Arrow from '@/components/Arrow';
 import BenefitsSection from '@/components/HeroSection';
 import heroSections from '@/data/benefits';
+import { articlesData } from '@/data/articles';
 
 export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -209,8 +210,119 @@ export const FeaturesAndServices = () => {
   );
 };
 
+export const NewsAndArticles = () => {
+  return (
+    <section className="bg-[url('/images/article-bg.png')] mt-[90px]  flex justify-center flex-col bg-top  bg-no-repeat">
+      <h2 className="text-center mb-[40px] mt-[30px] font-semibold text-[44px] leading-[55px]">
+        Our Latest news <br /> & Article
+      </h2>
+      <div className="flex  justify-center gap-[25px]">
+        {articlesData.map((article) => (
+          <article
+            key={article.id}
+            className="min-w-[313px] gap-[10px]  bg-[50%] max-w-[313px] bg-no-repeat bg-cover"
+          >
+            <img
+              src={article.imageSrc}
+              alt={article.imageAlt}
+              className="h-[227]"
+            />
+            <div className="flex px-5 gap-[15px] card-box-secondary-shadow bg-white py-[15px] flex-col">
+              <div className="flex gap-1.5">
+                <img src={'/images/news/square.svg'} alt="square" />
+                <h3 className="font-medium">{article.title}</h3>
+              </div>
+              <p className="font-semibold ">{article.description}</p>
+              <div className="flex justify-between">
+                <div className="flex gap-[5px]">
+                  <img src="/images/news/calender.svg" alt="calendar" />
+                  <time dateTime={article.date}>{article.date}</time>
+                </div>
+                <div className="flex gap-[5px]">
+                  <a className="text-[#5228B6] font-semibold" href="/">
+                    Read more
+                  </a>
+                  <img src="/images/arrow-right.svg" alt="arrow-right" />
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+};
+
 export const Main = ({ children }: { children: ReactNode }) => {
   return <main>{children}</main>;
+};
+
+export const Subscribe = () => {
+  return (
+    <section className="flex mt-[60px] justify-evenly items-center">
+      <img src="/images/subscribe.png" alt="subscribe" />
+      <div className="max-w-[500px]">
+        <div className="flex flex-col mb-[60px] gap-[5px]">
+          <h2 className="font-medium text-[35px] text-[#5228B6] leading-[62px]">
+            Subscribe to our newsletter
+          </h2>
+          <p>Subscribe to us to see news of about out country and so on</p>
+        </div>
+        <form action="">
+          <label className="min-w-[500] flex min-h-[50px]">
+            <input
+              type="email"
+              className="placeholder:text-purple-500 py-3.5  px-5 h-full card-box-secondary-shadow w-[70%]"
+              placeholder="Enter your mail"
+              autoComplete="true"
+            />
+            <button
+              className="px-[39px] w-[30%]  rounded-2xl py-3 bg-[#5228B6] text-white"
+              type="button"
+            >
+              Join Now
+            </button>
+          </label>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+//  footer
+
+export const Footer = () => {
+  return (
+    <footer>
+      <div>
+        <img src="/images/logo.svg" alt="logo" />
+        <p>Thank you for visiting out site and taking your time</p>
+      </div>
+      <ul>
+        <li>
+          <h3>General</h3>
+        </li>
+        <li>About Us</li>
+        <li>Pricing</li>
+        <li>Contact Us</li>
+        <li>Courses</li>
+      </ul>
+      <ul>
+        <li>
+          <h3>Policies</h3>
+        </li>
+        <li>Security safeguards</li>
+        <li>Terms of service</li>
+        <li>Privacy</li>
+        <li>Accessibility</li>
+      </ul>
+      <ul>
+        <li>
+          <h3>Get in touch</h3>
+        </li>
+      </ul>
+    </footer>
+  );
 };
 
 export default function Home() {
@@ -234,6 +346,8 @@ export default function Home() {
               imageOrder={section.imageOrder}
             />
           ))}
+          <NewsAndArticles />
+          <Subscribe />
         </div>
       </Main>
     </Container>

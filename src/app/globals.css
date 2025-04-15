@@ -24,6 +24,11 @@
   box-shadow: 0px 0px 9px 0px #99999740;
 }
 
+@utility card-box-secondary-shadow {
+  box-shadow: 0px 0px 11px 0px #9999994d;
+}
+
+
 @utility btnAnimation {
-  @apply transition-all duration-300 hover:-translate-y-1 hover:text-pink-500
+  @apply transition-all duration-300 hover:-translate-y-1 hover:text-pink-500;
 }

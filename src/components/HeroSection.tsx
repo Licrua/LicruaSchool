@@ -20,7 +20,7 @@ function BenefitsSection({
 }: BenefitsSectionProps) {
   return (
     <section className="grid grid-cols-2 gap-[132px] items-center mt-[90px] px-[150px]">
-      <div className={`order-${imageOrder}`}>
+      <div className={imageOrder === 'first' ? 'order-first' : 'order-last'}>
         <img src={imageSrc} alt="girl as a representative of the company" />
       </div>
       <div className="flex flex-col gap-[20px]">
