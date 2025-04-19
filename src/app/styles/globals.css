@@ -1,13 +1,21 @@
 @import 'tailwindcss';
+@plugin "daisyui";
 
 @theme {
   --color-background: #ffffff;
   --color-secondary: #5027b5;
+  --breakpoint-mg: 850px
 }
 
 @layer base {
   p {
     @apply font-medium;
+  }
+  a:hover {
+    @apply scale-120 text-amber-200 animate-pulse;
+  }
+  button:hover {
+	@apply saturate-150 scale-120 cursor-pointer
   }
 }
 
@@ -27,7 +35,6 @@
 @utility card-box-secondary-shadow {
   box-shadow: 0px 0px 11px 0px #9999994d;
 }
-
 
 @utility btnAnimation {
   @apply transition-all duration-300 hover:-translate-y-1 hover:text-pink-500;

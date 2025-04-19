@@ -1,39 +1,39 @@
-import SecondHeader from './UI/SecondHeader';
-
-type BenefitsSectionProps = Record<
-  | 'headerText'
-  | 'paragraphText'
-  | 'buttonText'
-  | 'imageSrc'
-  | 'buttonColor'
-  | 'imageOrder',
-  string
->;
-
-function BenefitsSection({
-  headerText,
-  paragraphText,
-  buttonText,
-  imageSrc,
-  buttonColor,
-  imageOrder,
-}: BenefitsSectionProps) {
+export const HeroSection = () => {
   return (
-    <section className="grid grid-cols-2 gap-[132px] items-center mt-[90px] px-[150px]">
-      <div className={imageOrder === 'first' ? 'order-first' : 'order-last'}>
-        <img src={imageSrc} alt="girl as a representative of the company" />
+    <section className=" max-w-[1305px] mx-auto  grid grid-cols-2 place-items-center rounded-br-[200px]  text-white ">
+      <div>
+        <h1 className="text-[60px] leading-[80px]  font-bold  ">
+          Upgrade{' '}
+          <span className="font-bold text-[70px]  leading-[80px]">YOUR</span>{' '}
+          skills for better future
+        </h1>
+        <p className="text-[22px] mt-[10px] mb-[31px] max-w-[527px]">
+          Find time for better yourself! And hone your skills buying some useful
+          courses!
+        </p>
+        <div className="mt-8 flex gap-4">
+          <a
+            className="rounded-[6px] py-[10px] px-[25px] bg-[#FF00C7]"
+            href="/"
+          >
+            Check Courses
+          </a>
+          <a
+            className="rounded-[6px] py-[10px] px-[25px] bg-transparent border-1 border-[#FFFFFF]"
+            href="/"
+          >
+            Learn more
+          </a>
+        </div>
       </div>
-      <div className="flex flex-col gap-[20px]">
-        <SecondHeader text={headerText} />
-        <p className="text-xl  leading-8">{paragraphText}</p>
-        <button
-          className={`bg-[${buttonColor}] text-white max-w-[181px] rounded-xl  py-[12] px-[40]`}
-        >
-          {buttonText}
-        </button>
+
+      {/* Правая часть */}
+      <div className="mb-[180px]">
+        <img
+          src="/images/hero-character.png"
+          alt="Person working on a computer"
+        />
       </div>
     </section>
   );
-}
-
-export default BenefitsSection;
+};
