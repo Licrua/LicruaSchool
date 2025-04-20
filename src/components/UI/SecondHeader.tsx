@@ -7,7 +7,7 @@ function SecondHeader({
 }) {
   return (
     <h2
-      className={`text-[44px] text-${position}  leading-[55px] font-semibold`}
+      className={`text-[23px] sm:text-[44px] text-${position}  leading-[40px] sm:leading-[55px] font-semibold`}
     >
       {text}
     </h2>

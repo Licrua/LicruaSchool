@@ -6,7 +6,7 @@ const heroSections = [
       'Boost your learning with expert resources and interactive content designed to help you succeed.',
     buttonText: 'Learn more',
     imageSrc: '/images/hero-with-laptop.png',
-    buttonColor: '#AC85FF',
+    buttonColor: 'lightPurple',
     imageOrder: 'first',
   },
   {
@@ -16,7 +16,7 @@ const heroSections = [
       'Our support team is always here to help you with any questions, day or night — we’ve got your back.',
     buttonText: 'Read more',
     imageSrc: '/images/hero-in-headphones.png',
-    buttonColor: '#5228B6',
+    buttonColor: 'darkPurple',
     imageOrder: 'last',
   },
 ];

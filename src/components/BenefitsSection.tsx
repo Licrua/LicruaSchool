@@ -19,7 +19,7 @@ function BenefitsSection({
   imageOrder,
 }: BenefitsSectionProps) {
   return (
-    <section className="grid grid-cols-2 gap-[132px] items-center mt-[90px] px-[150px]">
+    <section className="grid grid-cols-2 gap-[50px] sm:gap-[132px] items-center mt-[90px] px-5 sm:px-[150px]">
       <div className={imageOrder === 'first' ? 'order-first' : 'order-last'}>
         <img src={imageSrc} alt="girl as a representative of the company" />
       </div>
@@ -27,7 +27,13 @@ function BenefitsSection({
         <SecondHeader text={headerText} />
         <p className="text-xl  leading-8">{paragraphText}</p>
         <button
-          className={`bg-[${buttonColor}] text-white max-w-[181px] rounded-xl  py-[12] px-[40]`}
+          className={`text-white max-w-[181px] rounded-xl py-[12px] px-[20px] sm:px-[40px] ${
+            buttonColor === 'lightPurple'
+              ? 'bg-[#AC85FF]'
+              : buttonColor === 'darkPurple'
+              ? 'bg-[#5228B6]'
+              : ''
+          }`}
         >
           {buttonText}
         </button>

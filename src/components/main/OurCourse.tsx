@@ -5,10 +5,10 @@ import Arrow from "../Arrow";
 
 export const OurCourse = () => {
   return (
-    <section className="px-[136px] flex flex-col justify-center mt-[90px]">
+    <section className="px-4 sm:px-[136px] flex flex-col justify-center mt-[90px]">
       <SecondHeader position="left" text={'Our Courses'} />
       <nav aria-label="Course categories">
-        <ul className="flex items-center mt-5 mb-[59px] gap-6">
+        <ul className="flex justify-center flex-wrap items-center mt-5 mb-[59px] gap-6">
           <li>
             <button className="text-purple-700 font-bold underline underline-offset-[6px]">
               Top Rated

@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export const HeaderNavBurger = () => {
   return (
-    <div className="navbar-end">
-      <div className="dropdown">
+    <div className="navbar">
+      <div className="dropdown dropdown-left ">
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ export const HeaderNavDekstop = () => {
 
 export const Header = () => {
   return (
-    <header className="flex items-center justify-between  px-[50px]  py-[35px] text-white  font-medium leading-[100%]">
+    <header className="flex items-center justify-between   px-[20px] sm:px-[50px]  py-[35px] text-white  font-medium leading-[100%]">
 		  <Image
         priority
         src={'/images/logo.svg'}
@@ -81,7 +81,7 @@ export const Header = () => {
         <HeaderNavDekstop />
       </div>
      
-      <div >
+   
         <div className="flex  gap-[30px]">
           <button className="flex gap-[7px]">
             <img src="/images/user.svg" alt="account" />
@@ -92,7 +92,7 @@ export const Header = () => {
             <span className="hidden mg:inline-block">Cart</span>
           </button>
         </div>
-      </div>
+      
     </header>
   );
 };
