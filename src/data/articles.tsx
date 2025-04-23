@@ -1,4 +1,4 @@
-interface articlesData {
+export interface articlesData {
   id: string;
   title: string;
   description: string;

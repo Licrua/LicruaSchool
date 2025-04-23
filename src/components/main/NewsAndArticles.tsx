@@ -1,4 +1,7 @@
 import { articlesData } from '@/data/articles';
+import { Slider } from '../Slider';
+import NewsArticles from './NewsArticles';
+import { SwiperSlide } from 'swiper/react';
 
 export const NewsAndArticles = () => {
   return (
@@ -6,41 +9,21 @@ export const NewsAndArticles = () => {
       <h2 className="text-center mb-[40px] mt-[30px] font-semibold text-[30px] sm:text-[44px] leading-[55px]">
         Our Latest news <br /> & Article
       </h2>
-      <div className="carousel w-full">
-        <div className="flex  justify-center gap-[25px]">
-          {articlesData.map((article) => (
-			  <article
-				  
-              key={article.id}
-              className="min-w-[313px] gap-[10px] bg-[50%] max-w-[313px] bg-no-repeat bg-cover"
-            >
-              <img
-                src={article.imageSrc}
-                alt={article.imageAlt}
-                className="h-[227]"
-              />
-              <div className="flex px-5 gap-[15px] card-box-secondary-shadow bg-white py-[15px] flex-col">
-                <div className="flex gap-1.5">
-                  <img src={'/images/news/square.svg'} alt="square" />
-                  <h3 className="font-medium">{article.title}</h3>
-                </div>
-                <p className="font-semibold ">{article.description}</p>
-                <div className="flex justify-between">
-                  <div className="flex gap-[5px]">
-                    <img src="/images/news/calender.svg" alt="calendar" />
-                    <time dateTime={article.date}>{article.date}</time>
-                  </div>
-                  <div className="flex gap-[5px]">
-                    <a className="text-[#5228B6] font-semibold" href="/">
-                      Read more
-                    </a>
-                    <img src="/images/arrow-right.svg" alt="arrow-right" />
-                  </div>
-                </div>
-              </div>
-            </article>
+      {/* mobile */}
+      <div className="flex justify-center md:hidden ">
+        <Slider>
+          {articlesData.map((item) => (
+            <SwiperSlide className="!flex !justify-center">
+              <NewsArticles {...item} />
+            </SwiperSlide>
           ))}
-        </div>
+        </Slider>
+      </div>
+      {/* dekstop */}
+      <div className="hidden md:flex justify-center gap-[25px] flex-wrap ">
+        {articlesData.map((item) => (
+          <NewsArticles {...item} />
+        ))}
       </div>
     </section>
   );

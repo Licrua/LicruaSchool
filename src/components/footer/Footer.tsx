@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
     <footer className="bg-[#1E1E1E] text-white py-10 px-6">
-      <div className="max-w-[1250px] justify-evenly mx-auto grid grid-cols-[repeat(auto-fit,_500px)]  gap-5">
+      <div className="max-w-[1250px]  mx-auto grid grid-cols-1 md:grid-cols-2   gap-5">
         {/* Логотип и описание */}
         <div>
           <img src="/images/logo.svg" alt="Outschool logo" className="mb-4" />
@@ -12,7 +12,7 @@ export const Footer = () => {
         </div>
 
         {/* General */}
-        <div className="flex gap-[72]">
+        <div className="flex flex-col gap-10  md:flex-row md:gap-[72]">
           <div>
             <h3 className="font-semibold mb-3">General</h3>
             <ul className="space-y-2 text-sm text-[#E5E5E5]">

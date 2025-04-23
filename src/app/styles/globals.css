@@ -4,7 +4,7 @@
 @theme {
   --color-background: #ffffff;
   --color-secondary: #5027b5;
-  --breakpoint-mg: 850px
+  --breakpoint-mg: 850px;
 }
 
 @layer base {
@@ -15,7 +15,7 @@
     @apply scale-120 text-amber-200 animate-pulse;
   }
   button:hover {
-	@apply saturate-150 scale-120 cursor-pointer
+    @apply saturate-150 scale-110  cursor-pointer;
   }
 }
 
@@ -38,4 +38,8 @@
 
 @utility btnAnimation {
   @apply transition-all duration-300 hover:-translate-y-1 hover:text-pink-500;
+}
+
+@utility error {
+  @apply text-red-500 before:content-['⚠'] before:ml-1 before:inline-block;
 }

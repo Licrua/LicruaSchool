@@ -13,7 +13,7 @@ export const HeroSection = () => {
           Find time for better yourself! And hone your skills buying some useful
           courses!
         </p>
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex gap-9">
           <a
             className="rounded-[6px]  py-1.5 px-1.5 sm:py-[10px] sm:px-[25px] bg-[#FF00C7]"
             href="/"

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const HeaderNavBurger = () => {
   return (
@@ -66,13 +67,13 @@ export const HeaderNavDekstop = () => {
 
 export const Header = () => {
   return (
-    <header className="flex items-center justify-between   px-[20px] sm:px-[50px]  py-[35px] text-white  font-medium leading-[100%]">
-		  <Image
+    <header className="flex items-center justify-between   px-[20px] sm:px-[50px]   text-white  font-medium leading-[100%]">
+      <Image
         priority
         src={'/images/logo.svg'}
         alt="logo"
         width={146}
-        height={17}
+        height={15}
       />
       <div className="mg:hidden order-3 ">
         <HeaderNavBurger />
@@ -80,19 +81,19 @@ export const Header = () => {
       <div className="hidden mg:block">
         <HeaderNavDekstop />
       </div>
-     
-   
-        <div className="flex  gap-[30px]">
-          <button className="flex gap-[7px]">
-            <img src="/images/user.svg" alt="account" />
-            <span className="hidden mg:inline-block">Account</span>
-          </button>
-          <button className="flex gap-[7px]">
-            <img src="/images/cart.svg" alt="cart" />
-            <span className="hidden mg:inline-block">Cart</span>
-          </button>
-        </div>
-      
+
+      <div className="flex  gap-[30px]">
+        <button className="flex gap-[7px]">
+          <img src="/images/user.svg" alt="account" />
+          <span className="hidden mg:inline-block">
+            <Link href='/signUp'>Account</Link>
+          </span>
+        </button>
+        <button className="flex gap-[7px]">
+          <img src="/images/cart.svg" alt="cart" />
+          <span className="hidden  mg:inline-block">Cart</span>
+        </button>
+      </div>
     </header>
   );
 };

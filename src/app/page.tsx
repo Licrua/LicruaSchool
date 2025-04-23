@@ -1,3 +1,4 @@
+'use client';
 import BenefitsSection from '@/components/BenefitsSection';
 import heroSections from '@/data/benefits';
 import { Container } from '@/components/Container';
@@ -10,10 +11,12 @@ import { NewsAndArticles } from '@/components/main/NewsAndArticles';
 import { Subscribe } from '@/components/main/Subscribe';
 import { Footer } from '@/components/footer/Footer';
 import { Main } from '@/components/main/Main';
+import { Toaster } from 'react-hot-toast';
 
 const Home = () => {
   return (
     <Container>
+      <Toaster />
       <Header />
       <Main>
         <HeroSection />
