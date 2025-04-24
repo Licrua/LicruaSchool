@@ -15,7 +15,7 @@
     @apply scale-120 text-amber-200 animate-pulse;
   }
   button:hover {
-    @apply saturate-150 scale-110  cursor-pointer;
+    @apply delay-150 duration-300 ease-in-out scale-110 cursor-pointer transition;
   }
 }
 
