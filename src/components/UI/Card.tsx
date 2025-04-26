@@ -5,12 +5,13 @@ type CardProps = {
   author: string;
   rating: number;
   price: number;
-  image: string;
+	image: string;
+	onBuy: () => void;
 };
 
-function Card({ category, title, author, rating, price, image }: CardProps) {
+function Card({ category, title, author, rating, price, image, onBuy }: CardProps) {
   return (
-    <article className="flex flex-col  card-box-shadow rounded-2xl bg-white overflow-hidden">
+    <article className="flex flex-col hover:scale-110 transition-all transition-discrete card-box-shadow rounded-2xl bg-white overflow-hidden">
       <div>
         <img
           className="w-full h-[180px] object-cover rounded-t-2xl"
@@ -18,7 +19,6 @@ function Card({ category, title, author, rating, price, image }: CardProps) {
           alt="Artificial Intelligence course"
         />
       </div>
-
       <div className="flex flex-col flex-1 px-5 pt-5 gap-3">
         <h3 className="bg-[#EAEAEA] text-xs rounded-md max-w-[155px] py-[7px] font-medium px-4">
           {category}
@@ -45,7 +45,7 @@ function Card({ category, title, author, rating, price, image }: CardProps) {
 
       <div className="flex items-center justify-between mt-auto px-5 py-4">
         <p className="font-bold text-secondary text-xl">$ {price}</p>
-        <button className="rounded-md py-1.5 hover:text-black hover:animate-pulse px-4 border border-secondary text-secondary">
+        <button onClick={onBuy} className="rounded-md py-1.5 hover:text-black hover:animate-pulse px-4 border border-secondary text-secondary">
           Buy now
         </button>
       </div>

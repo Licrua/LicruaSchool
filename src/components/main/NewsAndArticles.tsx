@@ -13,7 +13,7 @@ export const NewsAndArticles = () => {
       <div className="flex justify-center md:hidden ">
         <Slider>
           {articlesData.map((item) => (
-            <SwiperSlide className="!flex !justify-center">
+            <SwiperSlide key={item.id} className="!flex !justify-center">
               <NewsArticles {...item} />
             </SwiperSlide>
           ))}
@@ -22,7 +22,7 @@ export const NewsAndArticles = () => {
       {/* dekstop */}
       <div className="hidden md:flex justify-center gap-[25px] flex-wrap ">
         {articlesData.map((item) => (
-          <NewsArticles {...item} />
+          <NewsArticles key={item.id} {...item} />
         ))}
       </div>
     </section>

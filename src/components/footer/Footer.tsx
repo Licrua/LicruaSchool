@@ -1,10 +1,18 @@
+import Image from 'next/image';
+
 export const Footer = () => {
   return (
     <footer className="bg-[#1E1E1E] text-white py-10 px-6">
       <div className="max-w-[1250px]  mx-auto grid grid-cols-1 md:grid-cols-2   gap-5">
         {/* Логотип и описание */}
         <div>
-          <img src="/images/logo.svg" alt="Outschool logo" className="mb-4" />
+          <Image
+            width={100}
+            height={100}
+            src="/images/logo.svg"
+            alt="licrua school"
+            className="mb-4"
+          />
           <p className="text-sm max-w-[232]   text-[#E5E5E5]">
             Thanks for your time spending on out site we are appreciate it so
             much!
@@ -35,7 +43,7 @@ export const Footer = () => {
           </div>
 
           {/* Get in touch */}
-          <div>
+          <address>
             <h3 className="font-semibold mb-3">Get in touch</h3>
             <p className="text-sm text-[#E5E5E5] mb-4">
               Follow us on social media and stay updated with the latest
@@ -55,13 +63,13 @@ export const Footer = () => {
                 <img src="/images/footer/social-media-4.svg" alt="YouTube" />
               </li>
             </ul>
-          </div>
+          </address>
         </div>
       </div>
 
       {/* Copyright */}
       <div className="text-center mt-10 text-sm text-[#AAAAAA]">
-        © 2022 - @OUTSCHOOL all rights reserved
+        <small>© 2025 - Licrua School all rights reserved</small>
       </div>
     </footer>
   );

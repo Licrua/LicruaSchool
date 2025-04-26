@@ -1,8 +1,9 @@
-type Course = {
+export type Course = {
   id: number;
   category: string;
   title: string;
   author: string;
+  abbreviation: string;
   rating: number;
   price: number;
   image: string;
@@ -12,6 +13,7 @@ export const courses: Course[] = [
   {
     id: 1,
     category: 'Artificial Intelligence',
+    abbreviation: 'AI',
     title: 'Modern Artificial Intelligence with zero coding',
     author: 'Jhon David',
     rating: 4.8,
@@ -21,6 +23,7 @@ export const courses: Course[] = [
   {
     id: 2,
     category: 'UX/UI Designing',
+    abbreviation: 'Design',
     title: 'Figma UX/UI Design essentials',
     author: 'Daniel Walter Scott',
     rating: 4.7,
@@ -30,6 +33,7 @@ export const courses: Course[] = [
   {
     id: 3,
     category: 'UX/UI Designing',
+    abbreviation: 'Design',
     title: 'Complete figma mega course: UX/UI Design Beginner to Expert',
     author: 'Kaleb Kingston',
     rating: 4.9,
@@ -39,6 +43,7 @@ export const courses: Course[] = [
   {
     id: 4,
     category: 'Web Development',
+    abbreviation: 'Development',
     title: 'The Complete 2022 Fullstack Web Developer course',
     author: 'Mark Lassoff',
     rating: 4.6,
@@ -48,6 +53,7 @@ export const courses: Course[] = [
   {
     id: 5,
     category: 'Web Development',
+    abbreviation: 'Development',
     title: 'Javascript for beginners',
     author: 'Jhon David',
     rating: 4.5,
@@ -57,6 +63,7 @@ export const courses: Course[] = [
   {
     id: 6,
     category: 'Digital Marketing',
+    abbreviation: 'Marketing',
     title: 'Digital Advertising and Marketing 101: The Complete...',
     author: 'Ben Silverstain',
     rating: 4.9,
@@ -66,6 +73,7 @@ export const courses: Course[] = [
   {
     id: 7,
     category: 'Digital Marketing',
+    abbreviation: 'Marketing',
     title: 'Mega Digital Marketing course: 12 Courses in 1',
     author: 'Phil Ebiner',
     rating: 4.6,
@@ -75,6 +83,7 @@ export const courses: Course[] = [
   {
     id: 8,
     category: 'UX/UI Designing',
+    abbreviation: 'Design',
     title: 'User Experience Design Essentials',
     author: 'Jacob Murphy',
     rating: 5.0,
