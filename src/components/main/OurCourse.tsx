@@ -1,3 +1,4 @@
+'use client'
 import { Course, courses } from '@/data/courses';
 import SecondHeader from '../UI/SecondHeader';
 import Card from '../UI/Card';
@@ -10,7 +11,10 @@ import { addItemToCart, getCartItems } from '@/utils/cartFunctions';
 export const OurCourse = () => {
 	const { user, isLoaded } = useUser();
 	const [cartItems, setCartItems] = useState<Course[]>([]);
+	console.log('cartItems', cartItems);
+
 	const [selectedCategory, setSelectedCategory] = useState('Top Rated');
+
 
 	const filteredCourses =
 		selectedCategory === 'Top Rated'
