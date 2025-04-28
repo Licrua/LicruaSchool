@@ -6,12 +6,22 @@ import { NavCourse } from './NavCourse';
 import { useState, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs';
 import { addItemToCart, getCartItems } from '@/utils/cartFunctions';
+// import { addCart } from '../../slices/CartSlice';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store/store';
+import { addCart, PayLoadType } from '@/slices/cartSlice';
 
 
 export const OurCourse = () => {
 	const { user, isLoaded } = useUser();
-	const [cartItems, setCartItems] = useState<Course[]>([]);
-	console.log('cartItems', cartItems);
+	// const [cartItems, setCartItems] = useState<Course[]>([]);
+	const dispatch = useDispatch();
+	const cart = useSelector((state: RootState) => state.cart);
+	console.log('cartttt', cart);
+	const timer = new Date();
+	console.log('timer', typeof timer);
+	
 
 	const [selectedCategory, setSelectedCategory] = useState('Top Rated');
 
@@ -23,7 +33,7 @@ export const OurCourse = () => {
 
 	const onBuy = (card: Course) => {
 		if (user) {
-			addItemToCart(user.id, card); // Добавляем товар в корзину
+			addItemToCart(user.id, card);
 		} else {
 			console.log('Пользователь не авторизован');
 		}
@@ -34,7 +44,7 @@ export const OurCourse = () => {
 			console.log('dasdasd');
 			const items = await getCartItems(user.id); // Загружаем товары из корзины
 			console.log('items', items);
-			setCartItems(items as Course[]);
+			dispatch(addCart(items as PayLoadType[]))
 		}
 	};
 

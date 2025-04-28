@@ -21,7 +21,7 @@ export const HeaderNavBurger = () => {
         </div>
         <ul
           tabIndex={0}
-          className="menu dropdown-left menu-sm dropdown-content bg-amber-500  rounded-box z-1 mt-3  p-2 shadow"
+          className="menu dropdown-left menu-sm dropdown-content bg-amber-500/50  rounded-box z-1 mt-3  p-2 shadow"
         >
           <li>
             <a href="">Courses</a>

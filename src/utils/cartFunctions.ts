@@ -5,7 +5,7 @@ import { doc, setDoc, collection, getDocs } from 'firebase/firestore'; // объ
 // Функция для добавления товара в корзину пользователя
 export const addItemToCart = async (userId: string, card: Course) => {
   try {
-    // Убедись, что card.id является строкой
+
     const cardId = String(card.id);  // Преобразуем в строку, если это число
 
     // Получаем ссылку на документ товара в корзине
@@ -18,8 +18,9 @@ export const addItemToCart = async (userId: string, card: Course) => {
       title: card.title,
       price: card.price,
       image: card.image,
-      createdAt: new Date(),
-    });
+      createdAt: new Date(),	
+	});
+	
 
     console.log('Товар добавлен в корзину!');
   } catch (error) {
@@ -41,8 +42,14 @@ export const getCartItems = async (userId: string) => {
 
 	  console.log('snapshot', querySnapshot);
 	  
-    // Преобразуем результаты в массив
-    const items = querySnapshot.docs.map(doc => doc.data());
+
+const items = querySnapshot.docs.map(doc => {
+  const data = doc.data();
+  return {
+    ...data,
+    createdAt: data.createdAt?.toDate().toISOString(),  // Преобразуем Firebase Timestamp в Date
+  };
+});
     console.log('Товары в корзине:', items);
     return items;
   } catch (error) {
