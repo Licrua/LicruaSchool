@@ -18,16 +18,16 @@ import { listenToCart } from '@/utils/cartFunctions';
 import { useDispatch } from 'react-redux';
 
 const Home = () => {
-	const { user, isLoaded } = useUser();
+	// const { user, isLoaded } = useUser();
 
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
-	useEffect(() => {
-		if (isLoaded && user?.id) {
-			const unsubscribe = listenToCart(user.id, dispatch);
-			return () => unsubscribe();
-		}
-	}, [isLoaded, user?.id, dispatch]);
+	// useEffect(() => {
+	// 	if (isLoaded && user?.id) {
+	// 		const unsubscribe = listenToCart(user.id, dispatch);
+	// 		return () => unsubscribe();
+	// 	}
+	// }, [isLoaded, user?.id, dispatch]);
 
 	return (
 		<Container>
