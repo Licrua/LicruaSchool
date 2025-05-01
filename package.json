@@ -17,6 +17,7 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.0",
     "react-hot-toast": "^2.5.2",
+    "react-loading-skeleton": "^3.5.0",
     "react-redux": "^9.2.0",
     "swiper": "^11.2.6"
   },
@@ -30,6 +31,7 @@
     "daisyui": "^5.0.27",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
+    "prettier": "^3.5.3",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

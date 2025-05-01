@@ -12,36 +12,50 @@ import { Subscribe } from '@/components/main/Subscribe';
 import { Footer } from '@/components/footer/Footer';
 import { Main } from '@/components/main/Main';
 import { Toaster } from 'react-hot-toast';
+import { useEffect, useState } from 'react';
+import { useUser } from '@clerk/nextjs';
+import { listenToCart } from '@/utils/cartFunctions';
+import { useDispatch } from 'react-redux';
 
 const Home = () => {
-  return (
-    <Container>
-      <Toaster />
-      <Header />
-      <Main>
-        <HeroSection />
-        <div className="bg-white">
-          <CompanyAndPartners />
-          <OurCourse />
-          <FeaturesAndServices />
-          {heroSections.map((section) => (
-            <BenefitsSection
-              key={section.id}
-              headerText={section.title}
-              paragraphText={section.description}
-              buttonText={section.buttonText}
-              imageSrc={section.imageSrc}
-              buttonColor={section.buttonColor}
-              imageOrder={section.imageOrder}
-            />
-          ))}
-          <NewsAndArticles />
-          <Subscribe />
-          <Footer />
-        </div>
-      </Main>
-    </Container>
-  );
-};
+	const { user, isLoaded } = useUser();
 
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (isLoaded && user?.id) {
+			const unsubscribe = listenToCart(user.id, dispatch);
+			return () => unsubscribe();
+		}
+	}, [isLoaded, user?.id, dispatch]);
+
+	return (
+		<Container>
+			<Toaster />
+			<Header />
+			<Main>
+				<HeroSection />
+				<div className=" container bg-white">
+					<CompanyAndPartners />
+					<OurCourse />
+					<FeaturesAndServices />
+					{heroSections.map((section) => (
+						<BenefitsSection
+							key={section.id}
+							headerText={section.title}
+							paragraphText={section.description}
+							buttonText={section.buttonText}
+							imageSrc={section.imageSrc}
+							buttonColor={section.buttonColor}
+							imageOrder={section.imageOrder}
+						/>
+					))}
+					<NewsAndArticles />
+					<Subscribe />
+				</div>
+			</Main>
+			<Footer />
+		</Container >
+	);
+};
 export default Home;

@@ -1,6 +1,8 @@
 import { Course } from '@/data/courses';
 import { db } from '../lib/firebase'; // Путь к твоей инициализации Firebase
-import { doc, setDoc, collection, getDocs } from 'firebase/firestore'; // объедини все импорты firestore сюда
+import { doc, setDoc, collection, getDocs, deleteDoc, onSnapshot } from 'firebase/firestore'; // объедини все импорты firestore сюда
+import { PayLoadType, setCart } from '@/slices/cartSlice';
+import { AppDispatch } from '@/store/store';
 
 // Функция для добавления товара в корзину пользователя
 export const addItemToCart = async (userId: string, card: Course) => {
@@ -28,32 +30,66 @@ export const addItemToCart = async (userId: string, card: Course) => {
   }
 };
 
-// Функция для получения всех товаров из корзины пользователя
-export const getCartItems = async (userId: string) => {
+
+
+export const listenToCart = (userId: string, dispatch: AppDispatch) => {
+  const cartRef = collection(doc(db, 'carts', userId), 'items');
+
+  return onSnapshot(cartRef, (snapshot) => {
+	  const items: PayLoadType[] = snapshot.docs.map((doc) => {
+		console.log('docId', doc.id);
+		
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...data,
+        createdAt: data.createdAt?.toDate().toISOString(),
+      };
+	});
+	  
+	  console.log('items', items);
+	  
+
+    dispatch(setCart(items));
+  }, (error) => {
+    console.error('Ошибка при подписке на корзину:', error);
+  });
+};
+
+
+export const removeItemFromCart = async (userId: string | undefined, cardId: string | number) => {
+	if (typeof userId === 'string') {
   try {
-    // Получаем ссылку на коллекцию 'items' внутри корзины пользователя
-    const cartRef = collection(doc(db, 'carts', userId), 'items');
-
-	  
-	  console.log(cartRef, 'cartRef');
-	  
-    // Получаем все товары из этой коллекции
-    const querySnapshot = await getDocs(cartRef);
-
-	  console.log('snapshot', querySnapshot);
-	  
-
-const items = querySnapshot.docs.map(doc => {
-  const data = doc.data();
-  return {
-    ...data,
-    createdAt: data.createdAt?.toDate().toISOString(),  // Преобразуем Firebase Timestamp в Date
-  };
-});
-    console.log('Товары в корзине:', items);
-    return items;
+	  // Ссылка на документ товара в корзине пользователя
+    const itemRef = doc(db, 'carts', userId, 'items', String(cardId));
+    // Удаление документа
+    await deleteDoc(itemRef);
+    console.log(`Товар с id ${cardId} удалён из корзины`);
   } catch (error) {
-    console.error('Ошибка при получении товаров из корзины:', error);
-    return [];
+    console.error('Ошибка при удалении товара:', error);
+  }
+	}
+};
+
+
+// 
+
+export const clearCartInFirestore = async (userId: string) => {
+  try {
+    // Получаем все товары в корзине
+    const itemsRef = collection(doc(db, 'carts', userId), 'items');
+    const snapshot = await getDocs(itemsRef);
+
+    // Удаляем каждый товар
+    const deletions = snapshot.docs.map((docSnap) =>
+      deleteDoc(doc(db, 'carts', userId, 'items', docSnap.id)) // Удаляем по ID
+    );
+
+    // Ждем выполнения всех удалений
+    await Promise.all(deletions);
+
+    console.log('Все товары удалены из корзины');
+  } catch (error) {
+    console.error('Ошибка при очистке корзины:', error);
   }
 };

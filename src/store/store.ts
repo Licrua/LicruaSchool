@@ -9,8 +9,16 @@ export const store = configureStore({
     cart: cardReducer, // используем cartReducer
   },
 });
+
+
+store.subscribe(() => {
+  const state = store.getState();
+  console.log('State changed:', state);
+});
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppSelector = useSelector.withTypes<RootState>()
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+
 

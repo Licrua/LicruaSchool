@@ -34,6 +34,8 @@ import { SignInButton } from '@clerk/nextjs';
 
 function NavButton({ name, image }: { name: string; image: string }) {
 	const cart = useAppSelector(state => state.cart);
+	console.log('cartdddddd', cart);
+
 
 	if (name === "cart") {
 		return (
@@ -48,9 +50,9 @@ function NavButton({ name, image }: { name: string; image: string }) {
 					src={`/images/${image}.svg`}
 					alt="icon_cart indicator"
 				/>
-				{cart.length > 0 && (
+				{cart?.length > 0 && (
 					<span className="indicator-item badge badge-secondary">
-						{cart.length}
+						{cart?.length}
 					</span>
 				)}
 			</Link>

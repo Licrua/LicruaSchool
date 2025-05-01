@@ -15,15 +15,24 @@ import { addCart, PayLoadType } from '@/slices/cartSlice';
 
 export const OurCourse = () => {
 	const { user, isLoaded } = useUser();
+	const [selectedCategory, setSelectedCategory] = useState('Top Rated');
+
+	console.log('loaded', isLoaded);
+
 	// const [cartItems, setCartItems] = useState<Course[]>([]);
-	const dispatch = useDispatch();
 	const cart = useSelector((state: RootState) => state.cart);
 	console.log('cartttt', cart);
 	const timer = new Date();
 	console.log('timer', typeof timer);
-	
 
-	const [selectedCategory, setSelectedCategory] = useState('Top Rated');
+	let response;
+	const pert = async () => {
+		response = await fetch('https://jsonplaceholder.typicode.com/posts');
+		return response.json()
+	};
+	pert();
+
+	console.log('response', response);
 
 
 	const filteredCourses =
@@ -31,28 +40,15 @@ export const OurCourse = () => {
 			? courses
 			: courses.filter((card) => card.abbreviation === selectedCategory);
 
-	const onBuy = (card: Course) => {
+
+
+	const onBuy = async (card: Course) => {
 		if (user) {
-			addItemToCart(user.id, card);
+		await	addItemToCart(user.id, card);
 		} else {
 			console.log('Пользователь не авторизован');
 		}
 	};
-
-	const loadCart = async () => {
-		if (user) {
-			console.log('dasdasd');
-			const items = await getCartItems(user.id); // Загружаем товары из корзины
-			console.log('items', items);
-			dispatch(addCart(items as PayLoadType[]))
-		}
-	};
-
-	useEffect(() => {
-		if (isLoaded && user) {
-			loadCart();
-		}
-	}, [isLoaded, user]);
 
 
 	return (
