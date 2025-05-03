@@ -5,7 +5,8 @@ export type PayLoadType = {
 	createdAt: string,
 	image: string, 
 	price: number, 
-	title: string
+	title: string,
+	cartStatus: 'authorization',
 }
 
 const initialState: PayLoadType[] = [];
@@ -21,9 +22,9 @@ export const cartSlice = createSlice({
 			console.log('action', action.payload);
 			state.push(...action.payload)
 		},
-		setCart: (state_, action: PayloadAction<PayLoadType[]>) => {
+		setCart: (_, action: PayloadAction<PayLoadType[]>) => {
 				return action.payload
-		}
+		},
   },
 });
 

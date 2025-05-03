@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cardReducer from '@/slices/cartSlice'
+import cardReducer from '@/slices/cartSlice';
+import orderReducer from '@/slices/orderSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
-
 export const store = configureStore({
   reducer: {
-    cart: cardReducer, // используем cartReducer
+    cart: cardReducer,
+    order: orderReducer,
   },
 });
-
 
 store.subscribe(() => {
   const state = store.getState();
@@ -18,7 +18,5 @@ store.subscribe(() => {
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export const useAppSelector = useSelector.withTypes<RootState>()
-export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
-
-
+export const useAppSelector = useSelector.withTypes<RootState>();
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
