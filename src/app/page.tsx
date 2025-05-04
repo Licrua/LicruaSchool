@@ -12,10 +12,6 @@ import { Subscribe } from '@/components/main/Subscribe';
 import { Footer } from '@/components/footer/Footer';
 import { Main } from '@/components/main/Main';
 import { Toaster } from 'react-hot-toast';
-import { useEffect, useState } from 'react';
-import { useUser } from '@clerk/nextjs';
-import { listenToCart } from '@/utils/cartFunctions';
-import { useDispatch } from 'react-redux';
 
 const Home = () => {
 	// const { user, isLoaded } = useUser();
@@ -44,7 +40,6 @@ const Home = () => {
 							key={section.id}
 							headerText={section.title}
 							paragraphText={section.description}
-							buttonText={section.buttonText}
 							imageSrc={section.imageSrc}
 							buttonColor={section.buttonColor}
 							imageOrder={section.imageOrder}

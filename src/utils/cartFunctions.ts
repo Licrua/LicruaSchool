@@ -41,7 +41,7 @@ export const listenToCart = (userId: string, dispatch: AppDispatch) => {
   return onSnapshot(
     cartRef,
     (snapshot) => {
-      const items: PayLoadType[] = snapshot.docs.map((doc) => {
+      const items = snapshot.docs.map((doc) => {
         console.log('docId', doc.id);
 
         const data = doc.data();

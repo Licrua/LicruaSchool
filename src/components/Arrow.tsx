@@ -1,12 +1,11 @@
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 function Arrow() {
+	const router = useRouter()
 	return (
-		<Link className=" inline-block  text-4xl" href={'/'}>
-			<span className="bg-black/40 rounded-full   p-3 w-12 h-12 flex  justify-center items-center ">
-				⇠
-			</span>
-		</Link>
+		<span onClick={() => router.back()} className="bg-black/40 cursor-pointer rounded-full text-3xl hover:scale-120   p-3 w-12 h-12 flex  justify-center items-center ">
+			⇠
+		</span>
 	);
 }
 
