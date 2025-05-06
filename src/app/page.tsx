@@ -12,18 +12,12 @@ import { Subscribe } from '@/components/main/Subscribe';
 import { Footer } from '@/components/footer/Footer';
 import { Main } from '@/components/main/Main';
 import { Toaster } from 'react-hot-toast';
+import { useAppSelector } from '@/store/store';
 
 const Home = () => {
-	// const { user, isLoaded } = useUser();
-
-	// const dispatch = useDispatch();
-
-	// useEffect(() => {
-	// 	if (isLoaded && user?.id) {
-	// 		const unsubscribe = listenToCart(user.id, dispatch);
-	// 		return () => unsubscribe();
-	// 	}
-	// }, [isLoaded, user?.id, dispatch]);
+	const adasd = useAppSelector(state => state.cart);
+	console.log('adasd', adasd);
+	
 
 	return (
 		<Container>

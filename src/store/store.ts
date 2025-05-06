@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cardReducer from '@/slices/cartSlice';
-import orderReducer from '@/slices/orderSlice';
+import cartStatusReducer from '@/slices/cartStatusSlice';
+// import orderReducer from '@/slices/orderSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
 export const store = configureStore({
   reducer: {
     cart: cardReducer,
-    order: orderReducer,
+    cartStatus: cartStatusReducer,
+    // order: orderReducer,
   },
 });
 

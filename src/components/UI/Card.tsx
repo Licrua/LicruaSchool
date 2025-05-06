@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/store";
-import { useState } from "react";
+import { useClerk } from "@clerk/nextjs";
 
 type CardProps = {
 	category: string;
@@ -15,8 +15,14 @@ type CardProps = {
 function Card({ category, title, id, author, rating, price, image, onBuy }: CardProps) {
 	// const [isDisabled, setIsDisabled] = useState(false);
 	const carts = useAppSelector(state => state.cart);
-	const hasIncluded = carts.some(item => item.id === String(id));
-
+	const { user } = useClerk();
+	console.log('user', user === null);
+	console.log('algo', carts.some(item => item.id === String(id)));
+	const hasIncluded = carts.some(item => item.id === String(id)) || !user;
+	console.log('hasIncluded', hasIncluded);
+	
+	
+	
 	return (
 		<article className="flex flex-col hover:scale-110 transition-all transition-discrete card-box-shadow rounded-2xl bg-white overflow-hidden">
 			<div>

@@ -3,7 +3,7 @@ import purchaseSteps from "@/data/stepsData"
 import { useAppSelector } from "@/store/store"
 
 export function PurchaseSteps() {
-	const order = useAppSelector(state => state.order.cartStatus);
+	const order = useAppSelector(state => state.cartStatus.cartStatus);
 	console.log('order', order);
 	
 	const getStepClass = (stepId: string) => {

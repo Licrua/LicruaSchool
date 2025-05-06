@@ -1,20 +1,32 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-type OrderStage = 'authorization' | 'formCart' | 'makeOrder';
-
-const initialState: { cartStatus: OrderStage } = {
-	cartStatus: 'authorization',
+export type Order = {
+  id: string;
+  title: string;
+  price: number;
+  image: string;
+  createdAt: string;
+  orderNumber: string;
+  status: 'pending' | 'paid' | 'shipped' | 'completed';
 };
 
-export const orderSlice = createSlice({
-	name: 'order',
-	initialState,
-	reducers: {
-		setCartStatus: (state, action: PayloadAction<OrderStage>) => {
-			state.cartStatus = action.payload;
-		},
-	},
+type OrderState = {
+  items: Order[];
+};
+
+const initialState: OrderState = {
+  items: [],
+};
+
+const orderSlice = createSlice({
+  name: 'orders',
+  initialState,
+  reducers: {
+	  setOrder: (_, action: PayloadAction<OrderState>) => {
+      return action.payload;
+    },
+  },
 });
 
-export const { setCartStatus } = orderSlice.actions;
+export const { setOrder } = orderSlice.actions;
 export default orderSlice.reducer;

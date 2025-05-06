@@ -8,7 +8,7 @@ import {
   deleteDoc,
   onSnapshot,
 } from 'firebase/firestore'; // объедини все импорты firestore сюда
-import { PayLoadType, setCart } from '@/slices/cartSlice';
+import {  setCart } from '@/slices/cartSlice';
 import { AppDispatch } from '@/store/store';
 
 // Функция для добавления товара в корзину пользователя
@@ -16,7 +16,7 @@ export const addItemToCart = async (userId: string, card: Course) => {
   try {
     const cardId = String(card.id); // Преобразуем в строку, если это число
 
-    // Получаем ссылку на документ товара в корзине
+
     const cartItemRef = doc(db, 'carts', userId, 'items', cardId);
 
     console.log('cartItemRef:', cartItemRef); // Для дебага
@@ -35,6 +35,8 @@ export const addItemToCart = async (userId: string, card: Course) => {
   }
 };
 
+
+
 export const listenToCart = (userId: string, dispatch: AppDispatch) => {
   const cartRef = collection(doc(db, 'carts', userId), 'items');
 
@@ -42,17 +44,15 @@ export const listenToCart = (userId: string, dispatch: AppDispatch) => {
     cartRef,
     (snapshot) => {
       const items = snapshot.docs.map((doc) => {
-        console.log('docId', doc.id);
 
         const data = doc.data();
+		console.log('data', data);
         return {
           id: doc.id,
           ...data,
           createdAt: data.createdAt?.toDate().toISOString(),
         };
       });
-
-      console.log('items', items);
 
       dispatch(setCart(items));
     },
@@ -79,7 +79,7 @@ export const removeItemFromCart = async (
   }
 };
 
-//
+
 
 export const clearCartInFirestore = async (userId: string | undefined) => {
   if (userId) {

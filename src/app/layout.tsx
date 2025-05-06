@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './styles/globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
 import ReduxProvider from './ReduxProvider';
-import { FetchDataCart } from '@/components/FetchDataCart';
+import { FetchData, FetchDataCart } from '@/components/FetchDataCart';
 import 'react-loading-skeleton/dist/skeleton.css'
 
 // export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 		<ClerkProvider>
 			<html lang="en">
 				<ReduxProvider>
-					<FetchDataCart />
+					<FetchData/>
 					<body className={`antialiased`}>{children}</body>
 				</ReduxProvider>
 			</html>

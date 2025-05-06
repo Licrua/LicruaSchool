@@ -35,7 +35,7 @@ const OrderList = ({ cart }: { cart: PayLoadType[] }) => {
       </ul>
       <div className="flex gap-5 mt-10">
         <p className="font-bold">Final Price:</p>
-        <span className="underline">{finalPrice}$</span>
+        <span>{finalPrice.toFixed(1)}$</span>
       </div>
     </div>
   );

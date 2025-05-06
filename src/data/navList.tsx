@@ -1,5 +1,5 @@
 const navItems = [
-  { id: 0, label: 'My Courses', href: '/' },
+  { id: 0, label: 'My Courses', href: '/myCourses' },
   {
     id: 1,
     label: 'Pricing',

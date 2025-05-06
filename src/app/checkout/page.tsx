@@ -1,11 +1,8 @@
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 
-type OrderSuccessProps = {
-	orderId: string;
-};
 
-export default async function OrderSuccessPage({ orderId }: OrderSuccessProps) {
+export default async function OrderSuccessPage() {
 	const user = await currentUser();
 	console.log('user', user);
 
@@ -24,11 +21,6 @@ export default async function OrderSuccessPage({ orderId }: OrderSuccessProps) {
 					<p className="text-base text-base-content/80">
 						Your order has been successfully placed. 🎊
 					</p>
-
-					<div className="bg-base-200 w-full mt-4 rounded-xl p-4 text-left">
-						<p className="text-sm text-center text-base-content/70">Order Number: #{user?.createdAt}</p>
-						<p className="text-lg font-bold text-primary break-all">{orderId}</p>
-					</div>
 					<div className="bg-base-400">
 						<p>
 							The course will be sent to your email
