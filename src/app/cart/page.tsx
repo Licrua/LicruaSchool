@@ -93,7 +93,7 @@ export default function CartPage() {
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => handleRemove(item.id)}
-                    className="btn absolute top-1 right-3 btn-error"
+                    className="btn  max-sm:w-1 max-sm:h-4 absolute top-1 right-3 btn-error"
                   >
                     X
                   </button>

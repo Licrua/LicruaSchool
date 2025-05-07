@@ -16,7 +16,7 @@ const OrderPage = () => {
 	}, [dispatch]);
 
 	return (
-		<div className=" flex relative flex-col w-full items-center h-[100vh] justify-center  sm:p-2">
+		<div className="flex relative flex-col w-full items-center h-[100vh] justify-center  sm:p-2">
 			<div className='absolute top-10 left-10'>
 				<Arrow />
 			</div>

@@ -11,20 +11,20 @@ const OrderList = ({ cart }: { cart: PayLoadType[] }) => {
         {cart.map((item) => (
           <li
             key={item.id}
-            className="flex justify-between gap-3 items-center bg-base-200 p-3 rounded-lg"
+            className="flex justify-between max-w-[500px] gap-3 items-center bg-base-200 p-3 rounded-lg"
           >
             <Image
               width={100}
               height={50}
               src={item.image}
-              className="w-20 me-2 sm:me-0 rounded"
+              className=" me-2 sm:me-0 rounded"
               alt="prod"
             />
-            <div>
+            <div className='max-w-[200px]'>
               <h3 className="font-medium">
                 <strong>Name:</strong>
               </h3>
-              <p className='max-w-[300px]'>{item.title}</p>
+              <p className=' truncate'>{item.title}</p>
             </div>
             <div>
               <strong>Price:</strong>

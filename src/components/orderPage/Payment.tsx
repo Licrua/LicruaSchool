@@ -23,7 +23,9 @@ const PaymentMethod = () => {
         </label>
         <select className="select mt-3 select-bordered">
           <option>Card</option>
-          <option>Cash</option>
+          <option>Paypal</option>
+          <option>Bitcoin</option>
+          <option>NFTcoint</option>
         </select>
       </div>
       <button onClick={onSumbitHandler} className="btn btn-success w-full">

@@ -5,7 +5,7 @@ import { useAppSelector } from '@/store/store';
 import Image from 'next/image';
 
 export default function OrdersPage() {
-  const orders = useAppSelector((state) => state.order);
+  const orders = useAppSelector((state) => state);
   console.log('orders', orders);
 
   if (!orders?.length) {

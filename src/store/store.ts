@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cardReducer from '@/slices/cartSlice';
 import cartStatusReducer from '@/slices/cartStatusSlice';
-// import orderReducer from '@/slices/orderSlice';
+import orderReducer from '@/slices/orderSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
@@ -9,7 +9,7 @@ export const store = configureStore({
   reducer: {
     cart: cardReducer,
     cartStatus: cartStatusReducer,
-    // order: orderReducer,
+    order: orderReducer,
   },
 });
 

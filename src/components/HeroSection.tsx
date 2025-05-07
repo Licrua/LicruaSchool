@@ -23,6 +23,12 @@ export const HeroSection = () => {
 						>
 							<span className="text-base">Check Courses</span>
 						</Link>
+						<Link
+							className="rounded-[6px] py-1.5 px-1.5 sm:py-[10px] sm:px-[25px] bg-transparent border-1 border-[#FFFFFF]"
+							href="/"
+						>
+							Learn more
+						</Link>
 					</div>
 				</div>
 
