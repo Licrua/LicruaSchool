@@ -23,31 +23,35 @@ export const addItemToOrders = async (userId: string | undefined) => {
       const ordersRef = collection(doc(db, 'orders', userId), 'items');
 
       const orderNumber = `ORD-${Date.now()}`; // Пример уникального номера заказа
-      const status = 'pending'; // Или 'paid', 'shipped', и т.д.
+      const status = 'pending';
 
-      // Добавляем каждый товар в заказы
-      const promises = snapshot.docs.map(async (docSnap) => {
+      // Собираем все товары в массив
+      const items = snapshot.docs.map((docSnap) => {
         const data = docSnap.data();
-        const itemId = docSnap.id;
-
-        const orderItemRef = doc(ordersRef, itemId);
-
-        await setDoc(orderItemRef, {
+        return {
+          id: docSnap.id,
           ...data,
-          orderNumber,
-          status,
-          createdAt: new Date(),
-        });
+        };
       });
-      await Promise.all(promises);
 
-      console.log(`Товары перенесены в заказы. Номер заказа: ${orderNumber}`);
+      // Создаем документ с номером заказа как ключом
+      const orderData = {
+        orderNumber,
+        status,
+        createdAt: new Date(),
+        items, // Массив товаров
+      };
+
+      console.log('dadasd', orderData);
+
+      await setDoc(doc(ordersRef, orderNumber), orderData);
+
+      console.log(`Заказ создан. Номер заказа: ${orderNumber}`);
     } catch (error) {
       console.error('Ошибка при добавлении товаров в заказы:', error);
     }
   }
 };
-
 
 // получение
 
@@ -57,17 +61,18 @@ export const listenToOrders = (userId: string, dispatch: AppDispatch) => {
   return onSnapshot(
     ordersRef,
     (snapshot) => {
-      const items = snapshot.docs.map((doc) => {
+      const orders = snapshot.docs.map((doc) => {
         const data = doc.data();
 
         return {
-          id: doc.id,
+          orderNumber: doc.id, // Номер заказа (ключ документа)
           ...data,
-          createdAt: data.createdAt?.toDate().toISOString(), // форматируем дату
+          createdAt: data.createdAt?.toDate().toISOString(), // Форматируем дату
+          items: data.items || [], // Убедитесь, что items всегда есть
         };
       });
-	  console.log('itemser', items);
-      dispatch(setOrder(items));
+      console.log('Полученные заказы:', orders);
+      dispatch(setOrder(orders)); // Отправляем заказы в Redux
     },
     (error) => {
       console.error('Ошибка при получении заказов:', error);

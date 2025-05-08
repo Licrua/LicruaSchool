@@ -1,14 +1,16 @@
 'use client';
-
 import Arrow from '@/components/Arrow';
 import { useAppSelector } from '@/store/store';
 import Image from 'next/image';
 
 export default function OrdersPage() {
-  const orders = useAppSelector((state) => state);
+  const orders = useAppSelector((state) => state.order.orders);
   console.log('orders', orders);
 
-  if (!orders?.length) {
+  // Преобразуем объект orders в массив
+  const ordersArray = Object.values(orders);
+
+  if (!ordersArray.length) {
     return (
       <p className="text-center mt-10 text-gray-500">
         You dont have any orders yet.
@@ -21,7 +23,7 @@ export default function OrdersPage() {
       <Arrow />
       <h1 className="text-3xl font-bold mb-6">My Orders</h1>
       <div className="space-y-6">
-        {orders.map((order) => (
+        {ordersArray.map((order) => (
           <div
             key={order.orderNumber}
             className="bg-base-100 shadow-md rounded-xl p-5 border border-base-300"
@@ -36,24 +38,26 @@ export default function OrdersPage() {
               </span>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div
-                key={order.id}
-                className="card bg-base-200 shadow-sm flex-row items-center gap-4 p-4"
-              >
-                <figure className=" overflow-hidden">
-                  <Image
-                    width={100}
-                    height={100}
-                    className="w-full"
-                    src={order.image}
-                    alt={order.title}
-                  />
-                </figure>
-                <div>
-                  <h2 className="text-lg font-medium">{order.title}</h2>
-                  <p className="text-sm text-gray-500">{order.price} $</p>
+              {order.items.map((item) => (
+                <div
+                  key={item.id}
+                  className="card bg-base-200 shadow-sm flex-col  gap-4 p-4"
+                >
+                  <figure className="overflow-hidden">
+                    <Image
+                      width={100}
+                      height={100}
+                      className="w-full"
+                      src={item.image}
+                      alt={item.title}
+                    />
+                  </figure>
+                  <div>
+                    <h2 className="text-lg font-medium">{item.title}</h2>
+                    <p className="text-sm text-gray-500">{item.price} $</p>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         ))}

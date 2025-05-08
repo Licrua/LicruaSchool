@@ -1,29 +1,33 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export type Order = {
+export type OrderItem = {
   id: string;
   title: string;
   price: number;
   image: string;
-  createdAt: string;
+};
+
+export type Order = {
   orderNumber: string;
   status: 'pending' | 'paid' | 'shipped' | 'completed';
+  createdAt: string;
+  items: OrderItem[]; 
 };
 
 type OrderState = {
-  items: Order[];
+  orders: Record<string, Order>; 
 };
 
 const initialState: OrderState = {
-  items: [],
+  orders: {},
 };
 
 const orderSlice = createSlice({
   name: 'orders',
   initialState,
   reducers: {
-	  setOrder: (_, action: PayloadAction<OrderState>) => {
-      return action.payload;
+    setOrder: (state, action: PayloadAction<Record<string, Order>>) => {
+      state.orders = action.payload; 
     },
   },
 });

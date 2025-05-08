@@ -21,7 +21,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <ReduxProvider>
-          <FetchData />
+				  <FetchData />
           <body className={`antialiased`}>{children}</body>
         </ReduxProvider>
       </html>
