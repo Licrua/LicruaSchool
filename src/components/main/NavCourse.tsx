@@ -4,11 +4,11 @@ export const NavCourse = ({
   selectedCategory,
   setSelectedCategory,
 }: {
-  selectedCategory: any;
-  setSelectedCategory: any}) => {
+  selectedCategory: string,
+  setSelectedCategory: (category: string) => void}) => {
   return (
-    <nav aria-label="Course categories">
-      <ul className="flex justify-center flex-wrap items-center mt-5 mb-[59px] gap-6">
+	  <nav aria-label="Course categories">
+		  <ul className="flex justify-center flex-wrap items-center mt-5 mb-[25px] gap-6">
         {categories.map(({ id, name }) => (
           <li key={id}>
             <button

@@ -8,6 +8,7 @@ const NewsArticles = ({
 	title,
 	description,
 	date,
+	site,
 }: articlesData) => {
 	return (
     <>
@@ -45,7 +46,7 @@ const NewsArticles = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#5228B6] flex gap-2 font-semibold"
-                href={'/'}
+                href={site}
               >
                 Read more
                 <Image
