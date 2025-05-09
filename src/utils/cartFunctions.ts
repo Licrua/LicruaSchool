@@ -26,7 +26,6 @@ export const addItemToCart = async (userId: string, card: Course) => {
       title: card.title,
       price: card.price,
       image: card.image,
-      createdAt: new Date(),
     });
 
     console.log('Товар добавлен в корзину!');
@@ -50,7 +49,6 @@ export const listenToCart = (userId: string, dispatch: AppDispatch) => {
         return {
           id: doc.id,
           ...data,
-          createdAt: data.createdAt?.toDate().toISOString(),
         };
       });
 

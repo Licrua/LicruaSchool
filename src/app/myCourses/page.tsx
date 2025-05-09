@@ -7,8 +7,10 @@ export default function OrdersPage() {
   const orders = useAppSelector((state) => state.order.orders);
   console.log('orders', orders);
 
-  // Преобразуем объект orders в массив
-  const ordersArray = Object.values(orders);
+
+	const ordersArray = Object.values(orders);
+	console.log('ordersArray', ordersArray);					
+	
 
   if (!ordersArray.length) {
     return (
