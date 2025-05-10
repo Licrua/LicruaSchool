@@ -84,32 +84,17 @@ export const listenToOrders = (userId: string, dispatch: AppDispatch) => {
 
 export const removeItemFromOrder = async (
   userId: string,
-  orderNumber: string,
-  itemId: string
+  orderNumber: string
 ) => {
   try {
     const orderRef = doc(db, 'orders', userId, 'items', orderNumber);
 
-    // Получаем текущий документ заказа
-    const orderSnapshot = await getDoc(orderRef);
-    if (!orderSnapshot.exists()) {
-      console.error('Заказ не найден');
-      return;
-    }
+    // Удаляем весь документ заказа
+    await deleteDoc(orderRef);
 
-    const orderData = orderSnapshot.data();
-    const updatedItems = orderData.items.filter(
-      (item: { id: string }) => item.id !== itemId
-    );
-
-    // Обновляем массив items
-    await updateDoc(orderRef, {
-      items: updatedItems,
-    });
-
-    console.log(`Товар с ID ${itemId} удален из заказа ${orderNumber}`);
+    console.log(`Заказ с номером ${orderNumber} удален`);
   } catch (error) {
-    console.error('Ошибка при удалении товара из заказа:', error);
+    console.error('Ошибка при удалении заказа:', error);
   }
 };
 

@@ -27,7 +27,7 @@ export const Header = () => {
       <div className="hidden mg:block">
         <HeaderNavDekstop />
       </div>
-      <div className="flex   gap-[30px]">
+      <div className="flex gap-[30px]">
         <SignedOut>
           <SignInButton>
             <NavButton name={'account'} image={'user'} />

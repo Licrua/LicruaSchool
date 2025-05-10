@@ -25,9 +25,9 @@ export const HeroSection = () => {
 						</Link>
 						<Link
 							className="rounded-[6px] py-1.5 px-1.5 sm:py-[10px] sm:px-[25px] bg-transparent border-1 border-[#FFFFFF]"
-							href="/"
+							href="/subscription"
 						>
-							Learn more
+							Subscription
 						</Link>
 					</div>
 				</div>

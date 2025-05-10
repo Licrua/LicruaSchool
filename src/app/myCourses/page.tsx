@@ -2,16 +2,16 @@
 import Arrow from '@/components/Arrow';
 import { useAppSelector } from '@/store/store';
 import Image from 'next/image';
+import { removeItemFromOrder, clearAllOrders } from '@/utils/orderFunctions';
+import { useClerk } from '@clerk/nextjs';
 
 export default function OrdersPage() {
   const orders = useAppSelector((state) => state.order.orders);
-  console.log('orders', orders);
-
-
+  const { user } = useClerk();
 	const ordersArray = Object.values(orders);
-	console.log('ordersArray', ordersArray);					
 	
 
+	
   if (!ordersArray.length) {
     return (
       <p className="text-center mt-10 text-gray-500">
@@ -20,10 +20,31 @@ export default function OrdersPage() {
     );
   }
 
+  const handleRemoveOrder = async (orderNumber: string) => {
+    try {
+      await removeItemFromOrder(user?.id, orderNumber);
+      console.log(`Order ${orderNumber} removed`);
+    } catch (error) {
+      console.error('Error removing order:', error);
+    }
+  };
+
+  const handleClearAllOrders = async () => {
+    try {
+      await clearAllOrders(user?.id); // Замените 'userId123' на реальный userId
+      console.log('All orders cleared');
+    } catch (error) {
+      console.error('Error clearing all orders:', error);
+    }
+  };
+
   return (
     <div className="p-6 max-w-5xl mx-auto">
       <Arrow />
       <h1 className="text-3xl font-bold mb-6">My Orders</h1>
+      <button onClick={handleClearAllOrders} className="btn btn-error mb-6">
+        Clear All Orders
+      </button>
       <div className="space-y-6">
         {ordersArray.map((order) => (
           <div
@@ -43,7 +64,7 @@ export default function OrdersPage() {
               {order.items.map((item) => (
                 <div
                   key={item.id}
-                  className="card bg-base-200 shadow-sm flex-col  gap-4 p-4"
+                  className="card bg-base-200 shadow-sm flex-col gap-4 p-4"
                 >
                   <figure className="overflow-hidden">
                     <Image
@@ -60,6 +81,14 @@ export default function OrdersPage() {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="flex justify-end mt-2.5">
+              <button
+                onClick={() => handleRemoveOrder(order.orderNumber)}
+                className="btn btn-sm btn-error mt-2"
+              >
+                Remove Order
+              </button>
             </div>
           </div>
         ))}
