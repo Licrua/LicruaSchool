@@ -1,5 +1,5 @@
 'use client';
-import { Autoplay, Navigation, Pagination, Parallax } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper } from 'swiper/react';
 
 import 'swiper/css';
