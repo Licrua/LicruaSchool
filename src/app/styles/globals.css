@@ -8,6 +8,9 @@
 }
 
 @layer base {
+	html  {
+		scroll-behavior: smooth
+	}
   p {
     @apply font-medium;
   }
@@ -15,7 +18,7 @@
     @apply scale-120 text-amber-200 animate-pulse;
   }
   button {
-    @apply  delay-150 duration-300  ease-in-out  hover:scale-110 cursor-pointer transition;
+    @apply delay-150 duration-300  ease-in-out  hover:scale-110 cursor-pointer transition;
   }
 }
 
@@ -36,12 +39,9 @@
   box-shadow: 0px 0px 11px 0px #9999994d;
 }
 
-
-
 @utility tooltip-custom {
-	@apply text-sm p-3 me-5 text-white rounded-md;
+  @apply text-sm p-3 me-5 text-white rounded-md;
 }
-
 
 @utility btnAnimation {
   @apply transition-all duration-300 hover:-translate-y-1 hover:text-pink-500;
@@ -52,5 +52,5 @@
 }
 
 @utility container {
-	@apply max-w-[1440px] mx-auto
+  @apply max-w-[1440px] mx-auto;
 }

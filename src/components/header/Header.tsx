@@ -22,7 +22,7 @@ export const Header = () => {
         height={15}
       />
       <div className="mg:hidden order-3 ">
-        <HeaderNavBurger />
+        <HeaderNavBurger /> 
       </div>
       <div className="hidden mg:block">
         <HeaderNavDekstop />

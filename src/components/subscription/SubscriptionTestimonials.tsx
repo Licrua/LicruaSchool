@@ -1,7 +1,6 @@
 'use client';
 import { SwiperSlide } from 'swiper/react';
 import { Slider } from '../Slider';
-import Image from 'next/image';
 import TestimonialCard from '../UI/TestimonialCard';
 
 function SubscriptionTestimonials() {

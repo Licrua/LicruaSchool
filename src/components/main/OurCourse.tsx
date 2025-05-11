@@ -5,15 +5,15 @@ import Card from '../UI/Card';
 import { NavCourse } from './NavCourse';
 import { useState } from 'react';
 import { useUser } from '@clerk/nextjs';
-import { addItemToCart } from '@/utils/cartFunctions';
+import { addItemToCart } from '@/utils/firebase/cartFunctions';
 import SearchInput from '../UI/SearchInput';
 
 export const OurCourse = () => {
   const { user } = useUser();
   const [selectedCategory, setSelectedCategory] = useState('Top Rated');
   const [searchText, setSearchText] = useState(''); // Состояние для текста поиска
-	console.log('searchText', searchText);
-	
+  console.log('searchText', searchText);
+
   const filteredCourses = courses.filter((card) => {
     const matchesCategory =
       selectedCategory === 'Top Rated' ||
@@ -33,7 +33,7 @@ export const OurCourse = () => {
   };
 
   return (
-    <section className="px-4 sm:px-[136px] flex flex-col justify-center mt-[90px]">
+    <section id='courses' className="px-4 sm:px-[136px] flex flex-col justify-center mt-[90px]">
       <SecondHeader position="left" text={'Our Courses'} />
       <NavCourse
         selectedCategory={selectedCategory}

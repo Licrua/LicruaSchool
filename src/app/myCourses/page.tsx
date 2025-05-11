@@ -2,15 +2,19 @@
 import Arrow from '@/components/Arrow';
 import { useAppSelector } from '@/store/store';
 import Image from 'next/image';
-import { removeItemFromOrder, clearAllOrders } from '@/utils/orderFunctions';
+import {
+  removeItemFromOrder,
+  clearAllOrders,
+} from '@/utils/firebase/orderFunctions';
 import { useClerk } from '@clerk/nextjs';
+import Loading from '../loading';
 
 export default function OrdersPage() {
   const orders = useAppSelector((state) => state.order.orders);
   const { user } = useClerk();
-	const ordersArray = Object.values(orders);
-	
+  const ordersArray = Object.values(orders);
 
+	if (ordersArray.length === 0) return <Loading />;
 	
   if (!ordersArray.length) {
     return (
@@ -19,6 +23,8 @@ export default function OrdersPage() {
       </p>
     );
   }
+
+  
 
   const handleRemoveOrder = async (orderNumber: string) => {
     try {
@@ -31,7 +37,7 @@ export default function OrdersPage() {
 
   const handleClearAllOrders = async () => {
     try {
-      await clearAllOrders(user?.id); // Замените 'userId123' на реальный userId
+      await clearAllOrders(user?.id);
       console.log('All orders cleared');
     } catch (error) {
       console.error('Error clearing all orders:', error);

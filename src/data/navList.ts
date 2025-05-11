@@ -5,7 +5,8 @@ const navItems = [
     label: 'Subscription',
     href: '/subscription',
   },
-  { id: 2, label: 'Contact Us', href: '/contact' },
+  { id: 2, label: 'Contact Us', href: '#contactUs' },
+  { id: 3, label: 'About Us', href: '/aboutUs' },
 ];
 
 export default navItems;

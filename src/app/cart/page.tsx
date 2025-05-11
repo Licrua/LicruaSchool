@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/store/store';
 import {
   clearCartInFirestore,
   removeItemFromCart,
-} from '@/utils/cartFunctions';
+} from '@/utils/firebase/cartFunctions';
 import { useUser } from '@clerk/nextjs';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';

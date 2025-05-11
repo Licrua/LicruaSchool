@@ -1,5 +1,5 @@
-import { clearCartInFirestore } from '@/utils/cartFunctions';
-import { addItemToOrders } from '@/utils/orderFunctions';
+import { clearCartInFirestore } from '@/utils/firebase/cartFunctions';
+import { addItemToOrders } from '@/utils/firebase/orderFunctions';
 import { useUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import React from 'react';
@@ -7,10 +7,10 @@ import React from 'react';
 const PaymentMethod = () => {
   const { user } = useUser();
   console.log('ussse', user);
-
-  const onSumbitHandler = () => {
-    addItemToOrders(user?.id);
-    clearCartInFirestore(user?.id);
+ 
+  const onSumbitHandler = async () => {
+    await addItemToOrders(user?.id);
+    await clearCartInFirestore(user?.id);
     redirect('checkout');
   };
 

@@ -5,11 +5,9 @@ import {
   collection,
   deleteDoc,
   doc,
-  getDoc,
   getDocs,
   onSnapshot,
   setDoc,
-  updateDoc,
 } from 'firebase/firestore';
 
 export const addItemToOrders = async (userId: string | undefined) => {

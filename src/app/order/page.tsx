@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/store/store';
 import PurchaseSteps from '@/components/UI/PurchaseSteps';
 import { setCartStatus } from '@/slices/cartStatusSlice';
 import Arrow from '@/components/Arrow';
+import Loading from '../loading';
 
 const OrderPage = () => {
 	const cart = useAppSelector((state) => state.cart);
@@ -14,6 +15,10 @@ const OrderPage = () => {
 	useEffect(() => {
 		dispatch(setCartStatus('makeOrder'));
 	}, [dispatch]);
+
+	console.log('cartClause', Boolean(cart.length === 0));
+	
+	if(!cart || cart.length === 0) return <Loading/>
 
 	return (
 		<div className="flex relative flex-col w-full items-center h-[100vh] justify-center  sm:p-2">
@@ -25,7 +30,6 @@ const OrderPage = () => {
 				<OrderList cart={cart} />
 				<PaymentMethod />
 			</div>
-			{/* <OrderSummary cartTotalSumm={cartTotalSumm} /> */}
 		</div>
 	);
 };

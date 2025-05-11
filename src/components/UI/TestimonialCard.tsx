@@ -7,7 +7,12 @@ interface TestimonialCardProps {
   author: string;
 }
 
-function TestimonialCard({ imageSrc, altText, text, author }: TestimonialCardProps) {
+function TestimonialCard({
+  imageSrc,
+  altText,
+  text,
+  author,
+}: TestimonialCardProps) {
   return (
     <blockquote className="p-6 bg-base-200 rounded-lg flex flex-col items-center">
       <Image

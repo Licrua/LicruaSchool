@@ -1,5 +1,4 @@
-
-
+import Arrow from '@/components/Arrow';
 import Pricing from '@/components/subscription/Pricing';
 import SubscriptionBenefits from '@/components/subscription/SubscriptionBenefits';
 import SubscriptionContainer from '@/components/subscription/SubscriptionContainer';
@@ -11,7 +10,8 @@ import WhyChooseSubscription from '@/components/subscription/WhySubscription';
 function SubscriptionPage() {
   return (
     <SubscriptionContainer>
-      <SubscriptionIntro />
+        <Arrow />
+		  <SubscriptionIntro />
       <Pricing />
       <WhyChooseSubscription />
       <SubscriptionBenefits />
