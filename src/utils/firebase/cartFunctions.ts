@@ -86,7 +86,6 @@ export const clearCartInFirestore = async (userId: string | undefined) => {
         (docSnap) => deleteDoc(doc(db, 'carts', userId, 'items', docSnap.id)) // Удаляем по ID
       );
 
-      // Ждем выполнения всех удалений
       await Promise.all(deletions);
 
       console.log('Все товары удалены из корзины');

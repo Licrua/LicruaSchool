@@ -1,9 +1,12 @@
+'use client';
+import React, { useState } from 'react';
 import CheckMark from '../UI/CheckMark';
+import SubscriptionModal from './SubscriptionModal';
 
 type Feature = {
-	id: string;
-	name: string;
-}[]
+  id: string;
+  name: string;
+}[];
 
 type PricingCardProps = {
   title: string;
@@ -28,9 +31,19 @@ function PricingCard({
   badgeText,
   badgeIcon,
 }: PricingCardProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsModalOpen(true);
+  };
+ 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div
-      className={`flex flex-col  justify-between items-center p-8 rounded-lg shadow-lg max-w-sm relative ${
+      className={`flex flex-col justify-between items-center p-8 rounded-lg shadow-lg max-w-sm relative ${
         highlighted
           ? 'bg-gradient-to-br from-blue-100 via-orange-100 to-purple-100 border-8 border-orange-200'
           : 'bg-slate-100'
@@ -57,12 +70,24 @@ function PricingCard({
             <b>{feature.name}</b>
           </p>
         ))}
-        <div className="flex  justify-center mt-8">
-          <button className="px-4 py-2 border-violet-400 border-4 hover:bg-violet-100 rounded-xl">
+        <div className="flex justify-center mt-8">
+          <button
+            className="px-4 py-2 border-violet-400 border-4 hover:bg-violet-100 rounded-xl"
+            onClick={handleButtonClick}
+          >
             {buttonLabel}
           </button>
         </div>
       </div>
+
+      {isModalOpen && (
+        <SubscriptionModal
+          closeModal={closeModal}
+          title={title}
+          price={price}
+          period={period}   
+        />
+      )}
     </div>
   );
 }

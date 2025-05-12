@@ -87,7 +87,6 @@ export const removeItemFromOrder = async (
   try {
     const orderRef = doc(db, 'orders', userId, 'items', orderNumber);
 
-    // Удаляем весь документ заказа
     await deleteDoc(orderRef);
 
     console.log(`Заказ с номером ${orderNumber} удален`);
