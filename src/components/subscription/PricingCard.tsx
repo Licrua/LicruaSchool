@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import CheckMark from '../UI/CheckMark';
 import SubscriptionModal from './SubscriptionModal';
+import { useAppSelector } from '@/store/store';
 
 type Feature = {
   id: string;
@@ -32,11 +33,14 @@ function PricingCard({
   badgeIcon,
 }: PricingCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const subscription = useAppSelector(
+    (state) => state.subscription.subscriptions
+  );
 
   const handleButtonClick = () => {
     setIsModalOpen(true);
   };
- 
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -71,12 +75,18 @@ function PricingCard({
           </p>
         ))}
         <div className="flex justify-center mt-8">
-          <button
-            className="px-4 py-2 border-violet-400 border-4 hover:bg-violet-100 rounded-xl"
-            onClick={handleButtonClick}
+          <div
+            className={`tooltip ${subscription.length > 0 ? 'tooltip' : ''} tooltip-top`}
+            data-tip="You already have a subscription"
           >
-            {buttonLabel}
-          </button>
+            <button
+              className="px-4 py-2 border-violet-400 border-4 hover:bg-violet-100 rounded-xl disabled:line-through disabled:cursor-not-allowed disabled:bg-gray-200"
+              onClick={handleButtonClick}
+              disabled={subscription.length > 0}
+            >
+              {buttonLabel}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -85,7 +95,7 @@ function PricingCard({
           closeModal={closeModal}
           title={title}
           price={price}
-          period={period}   
+          period={period}
         />
       )}
     </div>

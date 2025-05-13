@@ -4,7 +4,6 @@ import { useClerk } from '@clerk/nextjs';
 import { Timestamp } from 'firebase/firestore';
 import React from 'react';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
 
 interface SubscriptionModalProps {
   title: string;
@@ -19,12 +18,12 @@ export default function SubscriptionModal({
   period,
   closeModal,
 }: SubscriptionModalProps) {
-	const { user } = useClerk();
-	const subscriptions = useAppSelector(state => state)
-	const dispatch = useDispatch();
-	console.log('subscriptions', subscriptions);
-	
-	
+  const { user } = useClerk();
+  const subscriptions = useAppSelector(
+    (state) => state.subscription.subscriptions
+  );
+  console.log('subscriptions', subscriptions);
+
   const data = {
     type: title, // Тип подписки
     price: String(price), // Преобразование цены в число
@@ -35,10 +34,6 @@ export default function SubscriptionModal({
     period: period,
   };
 
-	
-	console.log('data', data);
-	
-	
   const handleBackgroundClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ): void => {
@@ -50,13 +45,13 @@ export default function SubscriptionModal({
   const confirmSubscription = async () => {
     try {
       if (user) {
-        await addSubscriptionToUser(user.id, data, dispatch);
-        toast('Subscription confirmed successfully!');
-        closeModal(); 
+        await addSubscriptionToUser(user.id, data);
+        toast.success('Subscription confirmed successfully!');
+        closeModal();
       }
     } catch (error) {
       console.error('Error confirming subscription:', error);
-      toast('Failed to confirm subscription. Please try again.');
+      toast.error('Failed to confirm subscription. Please try again.');
     }
   };
 

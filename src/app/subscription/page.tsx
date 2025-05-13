@@ -6,13 +6,15 @@ import SubscriptionFAQ from '@/components/subscription/SubscriptionFAQ';
 import SubscriptionIntro from '@/components/subscription/SubscriptionIntro';
 import SubscriptionTestimonials from '@/components/subscription/SubscriptionTestimonials';
 import WhyChooseSubscription from '@/components/subscription/WhySubscription';
+import CancelSubscription from '@/components/subscription/CancelSubscription';
 
 function SubscriptionPage() {
   return (
     <SubscriptionContainer>
-        <Arrow />
-		  <SubscriptionIntro />
+      <Arrow />
+      <SubscriptionIntro />
       <Pricing />
+      <CancelSubscription />
       <WhyChooseSubscription />
       <SubscriptionBenefits />
       <SubscriptionTestimonials />

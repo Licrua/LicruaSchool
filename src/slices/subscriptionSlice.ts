@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Subscription } from 'react-redux';
+import { Subscription } from '@/utils/firebase/subscriptionFunctions';
 
 interface SubscriptionState {
   subscriptions: Subscription[];

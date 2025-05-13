@@ -11,7 +11,7 @@ import {
 import { setCart } from '@/slices/cartSlice';
 import { AppDispatch } from '@/store/store';
 
-// Функция для добавления товара в корзину пользователя
+
 export const addItemToCart = async (userId: string, card: Course) => {
   try {
     const cardId = String(card.id); // Преобразуем в строку, если это число
