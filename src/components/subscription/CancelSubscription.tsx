@@ -17,12 +17,11 @@ const CancelSubscription: React.FC = () => {
   const handleCancelSubscription = async () => {
     if (subscriptions) {
       try {
-        await deleteSubscriptionFromUser(user.id, subscriptionType);
-        // dispatch(
-        //   setSubscriptions(
-        //     subscriptions.filter((sub) => sub.type !== activeSubscription.type)
-        //   )
-        // );
+        if (user) {
+          await deleteSubscriptionFromUser(user.id, subscriptionType);
+        } else {
+          toast.error('User is not logged in. Please log in and try again.');
+        }
         toast.success('Subscription canceled successfully!');
       } catch (error) {
         console.error('Error canceling subscription:', error);

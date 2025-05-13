@@ -23,7 +23,8 @@ function Card({
   image,
   onBuy,
 }: CardProps) {
-  const carts = useAppSelector((state) => state.cart);
+	const carts = useAppSelector((state) => state.cart);
+	console.log('carts', carts);
   const { user } = useClerk();
   const hasIncluded = carts.some((item) => item.id === String(id)) || !user;
 
@@ -33,7 +34,7 @@ function Card({
         <img
           className="w-full h-[180px] object-cover rounded-t-2xl"
           src={image}
-          alt="Artificial Intelligence course"
+          alt={title}
         />
       </div>
       <div className="flex flex-col flex-1 px-5 pt-5 gap-3">
