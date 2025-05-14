@@ -89,5 +89,5 @@ export const courses: Course[] = [
     rating: 5.0,
     price: 55.0,
     image: '/images/cards/Rectangle 1092.png',
-  },
+	},
 ];
