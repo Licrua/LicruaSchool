@@ -7,24 +7,13 @@ import {
   clearAllOrders,
 } from '@/utils/firebase/orderFunctions';
 import { useClerk } from '@clerk/nextjs';
-import Loading from '../loading';
+import { useRouter } from 'next/navigation';
 
 export default function OrdersPage() {
   const orders = useAppSelector((state) => state.order.orders);
+  const router = useRouter();
   const { user } = useClerk();
   const ordersArray = Object.values(orders);
-
-	if (ordersArray.length === 0) return <Loading />;
-	
-  if (!ordersArray.length) {
-    return (
-      <p className="text-center mt-10 text-gray-500">
-        You dont have any orders yet.
-      </p>
-    );
-  }
-
-  
 
   const handleRemoveOrder = async (orderNumber: string) => {
     try {
@@ -43,6 +32,22 @@ export default function OrdersPage() {
       console.error('Error clearing all orders:', error);
     }
   };
+
+
+  if (!ordersArray.length) {
+    return (
+      <div className='flex justify-center flex-col'>
+        <p className="text-center mt-10 text-gray-500">
+          You dont have any orders yet.
+        </p>
+			<button className='bg-amber-400 border-2 mt-1 rounded-2xl border-orange  self-center p-2' onClick={() => router.back()}>
+				<b>
+          Getting back to the main page
+				</b>
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
@@ -70,7 +75,7 @@ export default function OrdersPage() {
               {order.items.map((item) => (
                 <div
                   key={item.id}
-                  className="card bg-base-200 shadow-sm flex-col gap-4 p-4"
+                  className="card bg-base-200 shadow-sm flex-col gap-5 p-4"
                 >
                   <figure className="overflow-hidden">
                     <Image

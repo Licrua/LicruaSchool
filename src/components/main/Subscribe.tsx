@@ -102,7 +102,7 @@ export const Subscribe = () => {
           {/* Submit */}
           <button
             disabled={isSubmitting}
-            className="w-[30%] disabled:bg-gray-400 disabled:text-amber-100 flex self-center justify-center rounded-2xl py-3 bg-[#5228B6] text-white"
+            className="w-[30%] mb-8 disabled:bg-gray-400 disabled:text-amber-100 flex self-center justify-center rounded-2xl py-3 bg-[#5228B6] text-white"
             type="submit"
           >
             {isSubmitting ? 'Sending' : 'Join Now'}
