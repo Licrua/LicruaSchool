@@ -9,7 +9,7 @@ export type OrderItem = {
 
 export type Order = {
   orderNumber: string;
-  status: 'pending' | 'paid' | 'shipped' | 'completed';
+  status: 'onConfirmation' | 'paid' | 'shipped' | 'completed';
   createdAt: string;
   items: OrderItem[]; 
 };

@@ -8,6 +8,7 @@ import {
 } from '@/utils/firebase/orderFunctions';
 import { useClerk } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
+import Loading from '../loading';
 
 export default function OrdersPage() {
   const orders = useAppSelector((state) => state.order.orders);
@@ -23,6 +24,9 @@ export default function OrdersPage() {
       console.error('Error removing order:', error);
     }
   };
+	
+	console.log('ordersArray', ordersArray);
+	
 
   const handleClearAllOrders = async () => {
     try {
@@ -32,18 +36,18 @@ export default function OrdersPage() {
       console.error('Error clearing all orders:', error);
     }
   };
-
-
-  if (!ordersArray.length) {
+  if (!ordersArray.length) return <Loading />;
+  if (ordersArray.length === 0) {
     return (
-      <div className='flex justify-center flex-col'>
+      <div className="flex justify-center flex-col">
         <p className="text-center mt-10 text-gray-500">
           You dont have any orders yet.
         </p>
-			<button className='bg-amber-400 border-2 mt-1 rounded-2xl border-orange  self-center p-2' onClick={() => router.back()}>
-				<b>
-          Getting back to the main page
-				</b>
+        <button
+          className="bg-amber-400 border-2 mt-1 rounded-2xl border-orange  self-center p-2"
+          onClick={() => router.back()}
+        >
+          <b>Getting back to the main page</b>
         </button>
       </div>
     );

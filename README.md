@@ -1,40 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wishbone — Образовательная платформа
 
-## Getting Started
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-First, run the development server:
+    http://www.apache.org/licenses/LICENSE-2.0
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Wishbone — это современная образовательная платформа, созданная для онлайн-обучения, покупки курсов и управления подписками. Проект реализован на Next.js с использованием TypeScript, Redux Toolkit, Firebase и Clerk для аутентификации.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Основные возможности
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Просмотр и покупка онлайн-курсов
+- Управление корзиной и заказами
+- Система подписок с пробным периодом
+- Личный кабинет пользователя
+- Современный UI с TailwindCSS и DaisyUI
+- Адаптивная верстка для мобильных и десктопных устройств
+- Интеграция с Firebase Firestore для хранения данных
+- Аутентификация через Clerk
 
-## Learn More
+## Технологии
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js** — SSR/SSG React-фреймворк
+- **TypeScript** — строгая типизация
+- **Redux Toolkit** — глобальное управление состоянием
+- **Firebase** — хранение данных и подписки
+- **Clerk** — аутентификация пользователей
+- **TailwindCSS & DaisyUI** — стилизация и UI-компоненты
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Структура проекта
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `/src/app` — страницы приложения (Next.js App Router)
+- `/src/components` — переиспользуемые UI-компоненты
+- `/src/data` — статические данные (курсы, навигация и т.д.)
+- `/src/slices` — Redux Toolkit слайсы
+- `/src/store` — конфигурация Redux store
+- `/src/utils` — утилиты и функции для работы с Firebase
+- `/public/images` — изображения для карточек, логотипов и т.д.
 
-## Deploy on Vercel
+## Быстрый старт
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/your-username/wishbone.git
+   cd wishbone
+   ```
+2. Установите зависимости:
+   ```bash
+   npm install
+   ```
+3. Запустите проект:
+   ```bash
+   npm run dev
+   ```
+4. Откройте [http://localhost:3000](http://localhost:3000) в браузере.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Скриншоты
 
-## License
+![Главная страница](public/images/hero-character.png)
 
-This project is licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for details.
+## Контакты
+
+- Telegram: [@licrua](https://t.me/licrua)
+- Email: info@wishbone.com
+
+---
+
+**Wishbone** — учись, развивайся, достигай большего!
