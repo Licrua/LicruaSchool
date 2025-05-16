@@ -43,7 +43,7 @@ export const Header = () => {
           )}
         </SignedOut>
         <SignedIn>
-          <NavButton name={'cart'} image={'Cart'} />
+          <NavButton name={'cart'} image={'cart'} />
           <div className="flex mb-8 flex-col items-center gap-1.5">
             <p className="text-center border-2 border-amber-300 p-1 bg-amber-200/70">{subPlan}</p>
             <UserButton />

@@ -35,7 +35,8 @@ import { SignInButton } from '@clerk/nextjs';
 function NavButton({ name, image }: { name: string; image: string }) {
 	const cart = useAppSelector(state => state.cart);
 	console.log('cartdddddd', cart);
-
+	console.log('image', image);
+	
 
 	if (name === "cart") {
 		return (
