@@ -1,4 +1,4 @@
-# Outschool — Образовательная платформа
+# LicruaSchool — Образовательная платформа
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Outschool — это современная образовательная платформа, созданная для онлайн-обучения, покупки курсов и управления подписками. Проект реализован на Next.js с использованием TypeScript, Redux Toolkit, Firebase и Clerk для аутентификации.
+LicruaSchool — это современная образовательная платформа, созданная для онлайн-обучения, покупки курсов и управления подписками. Проект реализован на Next.js с использованием TypeScript, Redux Toolkit, Firebase и Clerk для аутентификации.
 
 ## Основные возможности
 
@@ -48,8 +48,8 @@ Outschool — это современная образовательная пл�
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/Licrua/Outschool.git
-   cd Outschool
+   git clone https://github.com/Licrua/LicruaSchool.git
+   cd LicruaSchool
    ```
 2. Установите зависимости:
    ```bash
@@ -66,8 +66,8 @@ Outschool — это современная образовательная пл�
 ## Контакты
 
 - Telegram: [@licrua](https://t.me/licrua)
-- Email: info@Outschool.com
+- Email: info@LicruaSchool.com
 
 ---
 
-**Outschool** — учись, развивайся, достигай большего!
+**LicruaSchool** — учись, развивайся, достигай большего!
