@@ -7,7 +7,6 @@ import TeamSection from '@/components/about/TeamSection';
 import HistorySection from '@/components/about/HistorySection';
 import ContactSection from '@/components/about/ContactSection';
 import DescriptionMissionSection from '@/components/about/DescriptionMissionSection';
-import SocialSection from '@/components/about/SocialSection';
 
 function AboutUs() {
   interface TeamMember {

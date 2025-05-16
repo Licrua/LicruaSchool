@@ -17,7 +17,7 @@ export const Header = () => {
   const subPlan = subs[0]?.type;
 
   return (
-    <header className="flex items-center container justify-between   px-[20px] sm:px-[50px]   text-white  font-medium leading-[100%]">
+    <header className="flex items-center container justify-between   px-[20px]    text-white  font-medium leading-[100%]">
       <Image
         priority
         src={'/images/logo.svg'}

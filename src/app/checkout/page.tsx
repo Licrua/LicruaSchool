@@ -39,7 +39,6 @@ export default async function OrderSuccessPage() {
           <div className="card-actions mt-8">
             <Link href="/">
               <span className="btn btn-primary btn-wide">Back to Home</span>
-              {/* <div>dasdas</div> */}
             </Link>
           </div>
         </div>

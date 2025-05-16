@@ -22,16 +22,16 @@ const coursesDetails = ({ params }: coursesDetailsProps) => {
 
   return (
     <div className="container mx-auto p-6">
-      <div className="card border-1 border-black/60 flex-row p-4 bg-base-100 shadow-xl">
+      <div className="card w-full max-w-4xl mx-auto flex flex-col lg:flex-row border-1 border-black/60 p-4 bg-base-100 shadow-xl">
         <Arrow />
-        <figure>
+        <figure className="flex items-center justify-center p-4">
           <img
             src={course.image}
             alt={course.title}
-            className="h-[200px] lg:w-[500px] object-cover"
+            className="rounded-2xl shadow-lg w-full max-w-xs h-[300px] object-cover transition-transform duration-300 hover:scale-105"
           />
         </figure>
-        <div className="card-body">
+        <div className="card-body flex-1">
           <h1 className="card-title text-3xl font-bold">{course.title}</h1>
           <p className="text-sm text-gray-500">{course.category}</p>
           <p className="text-lg font-semibold text-green-600">
@@ -62,7 +62,7 @@ const coursesDetails = ({ params }: coursesDetailsProps) => {
             <p className="text-sm text-gray-700">{course.info?.highlights}</p>
           </div>
           <div className="card-actions justify-end mt-6">
-            <Link href="/courses">
+            <Link href="/#courses">
               <button className="btn btn-primary">Enroll Now</button>
             </Link>
           </div>

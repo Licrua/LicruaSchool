@@ -25,7 +25,7 @@ export const HeaderNavBurger = () => {
 					tabIndex={0}
 					className="menu dropdown-left menu-sm dropdown-content bg-amber-500  rounded-box z-100 mt-3  p-2 shadow"
 				>
-					<NavList />
+					<NavList mode="mobile" />
 				</ul>
 			</div>
 		</div>
