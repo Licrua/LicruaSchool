@@ -1,4 +1,4 @@
-# Wishbone — Образовательная платформа
+# Outschool — Образовательная платформа
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Wishbone — это современная образовательная платформа, созданная для онлайн-обучения, покупки курсов и управления подписками. Проект реализован на Next.js с использованием TypeScript, Redux Toolkit, Firebase и Clerk для аутентификации.
+Outschool — это современная образовательная платформа, созданная для онлайн-обучения, покупки курсов и управления подписками. Проект реализован на Next.js с использованием TypeScript, Redux Toolkit, Firebase и Clerk для аутентификации.
 
 ## Основные возможности
 
@@ -48,8 +48,8 @@ Wishbone — это современная образовательная пла
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/your-username/wishbone.git
-   cd wishbone
+   git clone https://github.com/Licrua/Outschool.git
+   cd Outschool
    ```
 2. Установите зависимости:
    ```bash
@@ -61,15 +61,13 @@ Wishbone — это современная образовательная пла
    ```
 4. Откройте [http://localhost:3000](http://localhost:3000) в браузере.
 
-## Скриншоты
 
-![Главная страница](public/images/hero-character.png)
 
 ## Контакты
 
 - Telegram: [@licrua](https://t.me/licrua)
-- Email: info@wishbone.com
+- Email: info@Outschool.com
 
 ---
 
-**Wishbone** — учись, развивайся, достигай большего!
+**Outschool** — учись, развивайся, достигай большего!
